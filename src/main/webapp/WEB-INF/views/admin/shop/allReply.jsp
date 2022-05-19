@@ -88,8 +88,8 @@
 	<section id="container">
 		<aside>
 			<ul>
-				<li><a href="register">상품 등록</a></li>
-				<li><a href="list">상품 목록</a></li>
+				<li><a href="../goods/register">상품 등록</a></li>
+				<li><a href="../goods/list">상품 목록</a></li>
 				<li><a href="orderList">주문 목록</a></li>
 	
 				<li><a href="allReply">상품 소감</a></li>

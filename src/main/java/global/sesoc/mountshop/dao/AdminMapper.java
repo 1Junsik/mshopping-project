@@ -45,5 +45,8 @@ public interface AdminMapper {
 	public ArrayList<ReplyListVO> allReply();
 	
 	// 리플 삭제
-	public void deleteReply(int repNum);		
+	public void deleteReply(int repNum);
+	
+	// 주문 삭제
+	public void deleteOrderList(OrderVO order);		
 }

@@ -134,7 +134,7 @@ textarea#gdsDes { width:400px; height:180px; }
 				<img src="${pageContext.request.contextPath}${goods.gdsImg}" class="oriImg"/>
 				
 				<p>썸네일</p>
-			 	<img src="${pageContext.request.contextPath}${goods.gdsThumbImg}" class="thumbImg"/>  
+			 	<img src=" ${pageContext.request.contextPath}${goods.gdsThumbImg}" class="thumbImg"/>  
 			</div>
 			
 			<div class="inputArea">

@@ -81,9 +81,9 @@ textarea#gdsDes { width:400px; height:180px; }
 			<ul>
 				<li><a href="register">상품 등록</a></li>
 				<li><a href="list">상품 목록</a></li>
-				<li><a href="/admin/shop/orderList">주문 목록</a></li>
+				<li><a href="../shop/orderList">주문 목록</a></li>
 	
-				<li><a href="/admin/shop/allReply">상품 소감</a></li>
+				<li><a href="../shop/allReply">상품 소감</a></li>
 	
 				<li><a href="">유저 목록</a></li>
 			</ul>

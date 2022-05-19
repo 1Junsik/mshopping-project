@@ -62,4 +62,7 @@ public interface ShopMapper {
 	// 주문 상세 목록
 	public ArrayList<OrderListVO> orderView(OrderVO order);
 	
+	// 주문 삭제
+	public void deleteOrderList(OrderVO order);
+	
 }

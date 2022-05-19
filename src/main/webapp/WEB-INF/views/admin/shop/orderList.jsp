@@ -50,6 +50,8 @@
 */
 	div#container_box ul li { border:5px solid #eee; padding:10px 20px; margin-bottom:20px; }
 	div#container_box .orderList span { font-size:20px; font-weight:bold; display:inline-block; width:90px; margin-right:10px; }
+	.orderList div div { text-align:right; padding:10px; }
+	.orderList div div button { border:2px solid #999; background:#fff; }
 </style>
 
 
@@ -105,6 +107,12 @@
 					
 					<p><span>상태</span>${orderList.delivery}</p>
 					
+					<div>
+						<form action="orderList" method="post">
+							<input type="hidden" name="orderId" value="${orderList.orderId}" />
+							<button type="submit" class="delete_${orderList.orderId}_btn">삭제</button>
+						</form>
+					</div>
 				</div>
 				</li>
 				</c:forEach>

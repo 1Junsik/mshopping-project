@@ -116,6 +116,13 @@ select
          from tbl_cart   
 </insert> 
 
+<!-- 주문 삭제  -->
+<delete id="deleteOrderList" parameterType="order">
+	delete tbl_order 
+		where userId = #{userId}
+			and orderId = #{orderId}
+</delete>
+
 <!-- 카트 비우기 -->
 <delete id="cartAllDelete" parameterType="string">
  delete tbl_cart

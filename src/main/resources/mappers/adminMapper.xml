@@ -150,6 +150,13 @@ select
      where repNum = #{repNum}
 </delete>
 
+<!-- 주문 삭제  -->
+<delete id="deleteOrderList" parameterType="order">
+	delete tbl_order 
+		where userId = #{userId}
+			and orderId = #{orderId}
+</delete>
+
 
 </mapper>
 

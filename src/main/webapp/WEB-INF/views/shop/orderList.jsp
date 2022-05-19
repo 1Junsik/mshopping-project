@@ -68,6 +68,8 @@
 */
 	section#content ul li { border:5px solid #eee; padding:10px 20px; margin-bottom:20px; }
 	section#content .orderList span { font-size:20px; font-weight:bold; display:inline-block; width:90px; margin-right:10px; }
+	.orderList div div { text-align:right; padding:10px; }
+	.orderList div div button { border:2px solid #999; background:#fff; }
 </style>
 	
 </head>
@@ -131,6 +133,14 @@
 						<p><span>주소</span>(${orderList.userAddr1}) ${orderList.userAddr2} ${orderList.userAddr3}</p>
 						<p><span>가격</span><fmt:formatNumber pattern="###,###,###" value="${orderList.amount}" /> 원</p>
 						<p><span>상태</span>${orderList.delivery}</p>
+						<c:if test="${orderList.delivery == '배송 완료'}">
+							<div>
+								<form action="orderList" method="post">
+									<input type="hidden" name="orderId" value="${orderList.orderId}" />
+									<button type="submit" class="delete_${orderList.orderId}_btn">삭제</button>
+								</form>
+							</div>
+						</c:if>
 					</div>
 					</li>
 					</c:forEach>

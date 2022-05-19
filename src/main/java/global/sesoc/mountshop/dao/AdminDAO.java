@@ -98,4 +98,10 @@ public class AdminDAO {
 		mapper.deleteReply(repNum);
 	}
 	
+	// 주문 삭제
+	public void deleteOrderList(OrderVO order) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		mapper.deleteOrderList(order);
+	}
+	
 }

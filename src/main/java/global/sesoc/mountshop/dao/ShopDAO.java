@@ -127,4 +127,10 @@ public class ShopDAO {
 		ArrayList<OrderListVO> result = mapper.orderView(order);
 		return result;
 	}
+	
+	// 주문 삭제
+	public void deleteOrderList(OrderVO order) {
+		ShopMapper mapper = session.getMapper(ShopMapper.class);
+		mapper.deleteOrderList(order);
+	}
 }

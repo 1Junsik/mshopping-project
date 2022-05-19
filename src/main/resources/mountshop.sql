@@ -41,14 +41,14 @@ create table goods_category (
     cateCode     varchar2(30)    not null,                          -- 카테고리 코드
     cateCodeRef  varchar2(30)    null,                              -- 카테고리 참조 코드
     primary key(cateCode),
-    foreign key(cateCodeRef) references goods_category(cateCode)
+    foreign key(cateCodeRef) references goods_category(cateCode) on delete cascade
 );
 
 -- 상품 테이블와 카테고리 테이블은 다른 테이블이기 때문에 별도의 쿼리 작성
 alter table tbl_goods add
     constraint fk_goods_category
     foreign key (cateCode)
-        references goods_category(cateCode);
+        references goods_category(cateCode) on delete cascade;
 
 -- 상품 테이블의 상품 번호의 자동 입력을 위한 시퀸스 생성
 create sequence tbl_goods_seq;
@@ -58,7 +58,7 @@ create sequence tbl_goods_seq;
 
 -- 상품 리뷰 테이블
 create table tbl_reply (
-    gdsNum      number          not null,				-- 상품 번호
+    gdsNum      number          not null,		        -- 상품 번호
     userId      varchar2(50)    not null,				-- 아이디
     repNum      number          not null,				-- 리뷰 번호
     repCon      varchar2(2000)  not null,				-- 리뷰 내용
@@ -72,11 +72,11 @@ create sequence tbl_reply_seq;
 -- 소감 테이블의 상품 번호와 유저 아이디는 다른 테이블에서 참조
 alter table tbl_reply
     add constraint tbl_reply_gdsNum foreign key(gdsNum)
-    references tbl_goods(gdsNum);
+    references tbl_goods(gdsNum) on delete cascade;
    
 alter table tbl_reply
     add constraint tbl_reply_userId foreign key(userId)
-    references tbl_member(userId);
+    references tbl_member(userId) on delete cascade;
 
 
 
@@ -100,11 +100,11 @@ create sequence tbl_cart_seq;
 -- 카트 테이블과 맴버 테이블, 상품 테이블을 참조
 alter table tbl_cart
     add constraint tbl_cart_userId foreign key(userId)
-    references tbl_member(userId);
+    references tbl_member(userId) on delete cascade;
 
 alter table tbl_cart
     add constraint tbl_cart_gdsNum foreign key(gdsNum)
-    references tbl_goods(gdsNum);
+    references tbl_goods(gdsNum) on delete cascade;
 
 
 
@@ -117,9 +117,9 @@ create table tbl_order (
     orderId     varchar2(50) not null,					-- 주문 고유 아이디
     userId      varchar2(50) not null,					-- 아이디
     orderRec    varchar2(50) not null,					-- 수신자
-    userAddr1   varchar2(20) not null,					-- 주소 (우편번호)
-    userAddr2   varchar2(50) not null,					-- 주소 (기본주소)
-    userAddr3   varchar2(50) not null,					-- 주소 (상세주소)
+    userAddr1   varchar2(100) not null,					-- 주소 (우편번호)
+    userAddr2   varchar2(100) not null,					-- 주소 (기본주소)
+    userAddr3   varchar2(100) not null,					-- 주소 (상세주소)
     orderPhon   varchar2(30) not null,					-- 연락처
     amount      number       not null,					-- 총가격
     orderDate   Date         default sysdate,   		-- 주문 날짜
@@ -129,7 +129,7 @@ create table tbl_order (
 -- 주문 테이블과 멤버 테이블의 참조
 alter table tbl_order
     add constraint tbl_order_userId foreign key(userId)
-    references tbl_member(userId);
+    references tbl_member(userId) on delete cascade;
 
 
 -- tbl_order 에 새로운 컬럼을 추가, 이 컬럼은 배송 정보를 표시
@@ -137,21 +137,6 @@ alter table tbl_order
     add(
         delivery    varchar2(20)    default '배송준비'
     );
-    
-    
--- 테이블 수정 쿼리를 이용해 주소 컬럼의 크기를 100으로 수정    
-alter table tbl_order
-    modify(userAddr1 varchar2(100));
-
-alter table tbl_order
-    modify(userAddr2 varchar2(100));
-   
-alter table tbl_order
-    modify(userAddr3 varchar2(100));
-    
-    
-    
-    
     
     
     
@@ -173,10 +158,47 @@ create sequence tbl_order_details_seq;
 -- 주문 상세 테이블과 주문 테이블의 참조 설정
 alter table tbl_order_details
     add constraint tbl_order_details_orderId foreign key(orderId)
-    references tbl_order(orderId);
+    references tbl_order(orderId) on delete cascade;
+
+
+-- 카테고리 분류 관련 쿼리문
+insert into goods_category (cateName, cateCode) values ('등산', '100');
+
+
+-- 아직 추가하지 말것! (미완성), 밑에 연습 주석 db에 추가할것 
+insert into goods_category (cateName, cateCode) values ('캠핑', '200');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('텐트', '201', '200');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('침낭', '202', '200');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('랜턴', '203', '200');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('캠핑기구', '204', '200');
+
+insert into goods_category (cateName, cateCode) values ('낚시', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('낚싯대', '301', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('미끼', '302', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('낚시용품', '303', '300');
+
+insert into goods_category (cateName, cateCode) values ('기타물품', '400');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('구급상자', '401', '400');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('일회용품', '402', '400');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('놀이용품', '403', '400');
 
 
 
+
+
+-- 연습 
+insert into goods_category (cateName, cateCode) values ('무기', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('돌격소총', '101', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('기관단총', '102', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('경기관총', '103', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('산탄총', '104', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('지정사수소총', '105', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('저격소총', '106', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('기타', '107', '100');
+
+insert into goods_category (cateName, cateCode) values ('탄', '200');
+insert into goods_category (cateName, cateCode) values ('방어구', '300');
+insert into goods_category (cateName, cateCode) values ('회복제', '400');
 
 
 
