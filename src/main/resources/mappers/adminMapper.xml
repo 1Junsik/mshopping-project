@@ -153,8 +153,7 @@ select
 <!-- 주문 삭제  -->
 <delete id="deleteOrderList" parameterType="order">
 	delete tbl_order 
-		where userId = #{userId}
-			and orderId = #{orderId}
+		where orderId = #{orderId}
 </delete>
 
 

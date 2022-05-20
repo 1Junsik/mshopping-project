@@ -312,13 +312,9 @@ public class AdminController {
 	
 	// 주문 삭제
 	@RequestMapping(value = "shop/orderList", method = RequestMethod.POST)
-	public String postOrderList(HttpSession session, OrderVO order, String orderId) {
+	public String postOrderList(OrderVO order, String orderId) {
 		logger.info("post order list");
 		
-		MemberVO member = (MemberVO)session.getAttribute("member");
-		String userId = member.getUserId();
-		
-		order.setUserId(userId);
 		order.setOrderId(orderId);
 		
 		dao.deleteOrderList(order);
