@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>mountshop12</title>
+	<title>mountshop</title>
 	
 	<style>
 	
@@ -89,6 +89,9 @@
 				</li>
 				<li>
 					<a href="chatView">채팅방</a>
+				</li>
+				<li>
+					<a href="index">index.jsp 연결</a>
 				</li>
 				<li>
 					<a href="shop/cartList">카트 리스트</a>

@@ -22,4 +22,13 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	/**
+	 * index.jsp으로 이동
+	 */
+	@RequestMapping(value = "index", method = RequestMethod.GET)
+	public String index() {
+		
+		return "index";
+	}
 }
