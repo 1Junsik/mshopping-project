@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>mountshop12</title>
+	<title>mountshop</title>
 	
 	<style>
 	
