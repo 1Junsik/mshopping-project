@@ -312,4 +312,5 @@ public class ShopController {
 		
 		return "redirect:orderList";
 	}
+	
 }

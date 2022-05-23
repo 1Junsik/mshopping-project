@@ -210,6 +210,13 @@
    
    		 	<classifier>jdk15</classifier>
 		</dependency>
+		
+		<!-- WebSocket -->
+		<dependency>
+	    	<groupId>org.springframework</groupId>
+	    	<artifactId>spring-websocket</artifactId>
+	    	<version>4.3.6.RELEASE</version>
+		</dependency>
     
 	</dependencies>
 	

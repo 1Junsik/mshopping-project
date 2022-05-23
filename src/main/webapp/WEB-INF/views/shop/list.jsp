@@ -135,22 +135,55 @@
 			<aside id="aside">
 					<h3>카테고리</h3>
 					<ul>
-						<li><a href="list?c=100&l=1">무기</a>
+						<li><a href="list?c=100&l=1">등산</a>
 
 							<ul class="low">
-								<li><a href="list?c=101&l=2">돌격소총</a></li>
-								<li><a href="list?c=102&l=2">기관단총</a></li>
-								<li><a href="list?c=103&l=2">경기관총</a></li>
-								<li><a href="list?c=104&l=2">산탄총</a></li>
-								<li><a href="list?c=105&l=2">지정사수소총</a></li>
-								<li><a href="list?c=106&l=2">저격소총</a></li>
+								<li><a href="list?c=101&l=2">등산화</a></li>
+								<li><a href="list?c=102&l=2">등산복 상의</a></li>
+								<li><a href="list?c=103&l=2">등산복 하의</a></li>
+								<li><a href="list?c=104&l=2">등산스틱</a></li>
+								<li><a href="list?c=105&l=2">등산용품</a></li>
+								<li><a href="list?c=106&l=2">등산배낭</a></li>
 								<li><a href="list?c=107&l=2">기타</a></li>
 							</ul>
 							
 						</li>
-						<li><a href="list?c=200&l=1">탄약</a></li>
-						<li><a href="list?c=300&l=1">방어구</a></li>
-						<li><a href="list?c=400&l=1">회복제</a></li>
+						
+						<li><a href="list?c=200&l=1">캠핑</a>
+
+							<ul class="low">
+								<li><a href="list?c=201&l=2">텐트</a></li>
+								<li><a href="list?c=202&l=2">침낭</a></li>
+								<li><a href="list?c=203&l=2">랜턴</a></li>
+								<li><a href="list?c=204&l=2">캠핑기구</a></li>
+								<li><a href="list?c=205&l=2">기타</a></li>
+							</ul>
+							
+						</li>
+						
+						<li><a href="list?c=300&l=1">낚시</a>
+
+							<ul class="low">
+								<li><a href="list?c=301&l=2">낚시대</a></li>
+								<li><a href="list?c=302&l=2">낚시장비</a></li>
+								<li><a href="list?c=303&l=2">낚시줄</a></li>
+								<li><a href="list?c=304&l=2">미끼</a></li>
+								<li><a href="list?c=305&l=2">그물</a></li>								
+								<li><a href="list?c=306&l=2">기타</a></li>
+							</ul>
+							
+						</li>
+						
+						<li><a href="list?c=400&l=1">기타용품</a>
+
+							<ul class="low">
+								<li><a href="list?c=401&l=2">구급상자</a></li>
+								<li><a href="list?c=402&l=2">일회용품</a></li>
+								<li><a href="list?c=403&l=2">놀이용품</a></li>
+								<li><a href="list?c=404&l=2">기타</a></li>		
+							</ul>
+							
+						</li>	
 					</ul>
 			</aside>
 			

@@ -11,8 +11,8 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
-	<x>235</x>
-	<y>390</y>
+	<x>0</x>
+	<y>0</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2022-05-16 00:57:39</creation_date>
-			<updated_date>2022-05-19 11:01:17</updated_date>
+			<updated_date>2022-05-21 09:04:02</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -292,8 +292,8 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description>카트 수량</description>
-			<logical_name>cartStock</logical_name>
-			<physical_name>cartStock</physical_name>
+			<logical_name>CartStock</logical_name>
+			<physical_name>CartStock</physical_name>
 			<type>decimal</type>
 		</word>
 		<word>
@@ -308,8 +308,8 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description>카트 수량</description>
-			<logical_name>CartStock</logical_name>
-			<physical_name>CartStock</physical_name>
+			<logical_name>cartStock</logical_name>
+			<physical_name>cartStock</physical_name>
 			<type>decimal</type>
 		</word>
 		<word>
@@ -2333,7 +2333,7 @@
 			<connections>
 				<relation>
 					<id>4</id>
-					<source>0</source>
+					<source>4</source>
 					<target>5</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2355,7 +2355,7 @@
 				</relation>
 				<relation>
 					<id>5</id>
-					<source>4</source>
+					<source>0</source>
 					<target>5</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2386,7 +2386,7 @@
 				<normal_column>
 					<id>37</id>
 					<referenced_column>27</referenced_column>
-					<relation>5</relation>
+					<relation>4</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2420,7 +2420,7 @@
 				<normal_column>
 					<id>38</id>
 					<referenced_column>0</referenced_column>
-					<relation>4</relation>
+					<relation>5</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2704,7 +2704,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>7</word_id>
+					<word_id>8</word_id>
 					<id>45</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -2761,7 +2761,7 @@
 			<connections>
 				<relation>
 					<id>7</id>
-					<source>4</source>
+					<source>0</source>
 					<target>7</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2783,7 +2783,7 @@
 				</relation>
 				<relation>
 					<id>8</id>
-					<source>0</source>
+					<source>4</source>
 					<target>7</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2847,7 +2847,7 @@
 				<normal_column>
 					<id>47</id>
 					<referenced_column>0</referenced_column>
-					<relation>8</relation>
+					<relation>7</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2881,7 +2881,7 @@
 				<normal_column>
 					<id>48</id>
 					<referenced_column>27</referenced_column>
-					<relation>7</relation>
+					<relation>8</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2913,7 +2913,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>8</word_id>
+					<word_id>7</word_id>
 					<id>49</id>
 					<description></description>
 					<unique_key_name></unique_key_name>

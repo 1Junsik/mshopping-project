@@ -161,46 +161,38 @@ alter table tbl_order_details
     references tbl_order(orderId) on delete cascade;
 
 
+
 -- 카테고리 분류 관련 쿼리문
 insert into goods_category (cateName, cateCode) values ('등산', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('등산화', '101', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('등산복 상의', '102', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('등산복 하의', '103', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('등산스틱', '104', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('등산용품', '105', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('등산배낭', '106', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('기타', '107', '100');
 
 
--- 아직 추가하지 말것! (미완성), 밑에 연습 주석 db에 추가할것 
 insert into goods_category (cateName, cateCode) values ('캠핑', '200');
 insert into goods_category (cateName, cateCode, cateCodeRef) values ('텐트', '201', '200');
 insert into goods_category (cateName, cateCode, cateCodeRef) values ('침낭', '202', '200');
 insert into goods_category (cateName, cateCode, cateCodeRef) values ('랜턴', '203', '200');
 insert into goods_category (cateName, cateCode, cateCodeRef) values ('캠핑기구', '204', '200');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('기타', '205', '200');
 
 insert into goods_category (cateName, cateCode) values ('낚시', '300');
-insert into goods_category (cateName, cateCode, cateCodeRef) values ('낚싯대', '301', '300');
-insert into goods_category (cateName, cateCode, cateCodeRef) values ('미끼', '302', '300');
-insert into goods_category (cateName, cateCode, cateCodeRef) values ('낚시용품', '303', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('낚시대', '301', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('낚시장비', '302', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('낚시줄', '303', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('미끼', '304', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('그물', '305', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('기타', '306', '300');
 
-insert into goods_category (cateName, cateCode) values ('기타물품', '400');
+insert into goods_category (cateName, cateCode) values ('기타용품', '400');
 insert into goods_category (cateName, cateCode, cateCodeRef) values ('구급상자', '401', '400');
 insert into goods_category (cateName, cateCode, cateCodeRef) values ('일회용품', '402', '400');
 insert into goods_category (cateName, cateCode, cateCodeRef) values ('놀이용품', '403', '400');
-
-
-
-
-
--- 연습 
-insert into goods_category (cateName, cateCode) values ('무기', '100');
-insert into goods_category (cateName, cateCode, cateCodeRef) values ('돌격소총', '101', '100');
-insert into goods_category (cateName, cateCode, cateCodeRef) values ('기관단총', '102', '100');
-insert into goods_category (cateName, cateCode, cateCodeRef) values ('경기관총', '103', '100');
-insert into goods_category (cateName, cateCode, cateCodeRef) values ('산탄총', '104', '100');
-insert into goods_category (cateName, cateCode, cateCodeRef) values ('지정사수소총', '105', '100');
-insert into goods_category (cateName, cateCode, cateCodeRef) values ('저격소총', '106', '100');
-insert into goods_category (cateName, cateCode, cateCodeRef) values ('기타', '107', '100');
-
-insert into goods_category (cateName, cateCode) values ('탄', '200');
-insert into goods_category (cateName, cateCode) values ('방어구', '300');
-insert into goods_category (cateName, cateCode) values ('회복제', '400');
-
-
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('기타', '404', '400');
 
 
 
