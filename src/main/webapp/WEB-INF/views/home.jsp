@@ -91,6 +91,9 @@
 					<a href="chatView">채팅방</a>
 				</li>
 				<li>
+					<a href="index">index.jsp 연결</a>
+				</li>
+				<li>
 					<a href="shop/cartList">카트 리스트</a>
 				</li>
 				<li>
