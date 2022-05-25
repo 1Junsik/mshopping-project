@@ -8,10 +8,16 @@
 	<title>kubg</title>
 	
 	<script src="../resources/jquery/jquery-3.3.1.min.js"></script>
+	<link rel='stylesheet' href='../resources/css/woocommerce-layout.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href='../resources/css/woocommerce-smallscreen.css' type='text/css' media='only screen and (max-width: 768px)'/>
+	<link rel='stylesheet' href='../resources/css/woocommerce.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href='../resources/css/font-awesome.min.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href='../resources/style.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500,700%7CHerr+Von+Muellerhoff:400,500,700%7CQuattrocento+Sans:400,500,700' type='text/css' media='all'/>
+	<link rel='stylesheet' href='../resources/css/easy-responsive-shortcodes.css' type='text/css' media='all'/>
+	<!-- <link rel="stylesheet" href="../resources/css/user/shop/default.css" /> -->
 	
-	<link rel="stylesheet" href="../resources/css/user/shop/default.css" />
-	
-	<style>
+ 	<style>
 		div.goods div.goodsImg { float:left; width:350px; }
 		div.goods div.goodsImg img { width:350px; height:auto; }
 		
@@ -19,8 +25,8 @@
 		div.goods div.goodsInfo p { margin:0 0 20px 0; }
 		div.goods div.goodsInfo p span { display:inline-block; width:100px; margin-right:15px; } 
 		
-		div.goods div.goodsInfo p.cartStock input { font-size:22px; width:50px; padding:5px; margin:0; border:1px solid #eee; }
-		div.goods div.goodsInfo p.cartStock button { font-size:26px; border:none; background:none; } 
+		cartStock input { font-size:22px; width:50px; padding:5px; margin:0; border:1px solid #eee; }
+		cartStock button { font-size:26px; border:none; background:none; } 
 		div.goods div.goodsInfo p.addToCart { text-align:right; }
 		div.goods div.goodsInfo p.addToCart button { font-size:22px; padding:5px 10px; border:1px solid #eee; background:#eee;}
 		div.goods div.gdsDes { font-size:18px; clear:both; padding-top:30px; }
@@ -53,7 +59,7 @@
 		div.modalContent textarea { font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:500px; height:200px; }
 		div.modalContent button { font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc; }
 		div.modalContent button.modal_cancel { margin-left:20px; }
-	</style>
+	</style> 
 	
 		
 <script>
@@ -64,7 +70,7 @@ function replyList() {
 	// 비동기식 데이터 요청
 	$.getJSON("replyList" + "?n=" + gdsNum, function(data){
 		var str = "";
-		
+		    
 		$(data).each(function(){
 			
 			console.log(data);
@@ -74,18 +80,18 @@ function replyList() {
 			repDate = repDate.toLocaleDateString("ko-US")
 							
 			// HTML코드 조립
-			str += "<li data-repNum='" + this.repNum + "'>" //"<li data-gdsNum='" + this.gdsNum + "'>"
-				 + "<div class='userInfo'>"
-				 + "<span class='userName'>" + this.userName + "</span>"
-				 + "<span class='date'>" + repDate + "</span>"
+			str += "<li style='padding:10px 0; border-bottom:2px solid #eee; list-style:none;' data-repNum='" + this.repNum + "'>" //"<li data-gdsNum='" + this.gdsNum + "'>"
+				 + "<div class='userInfo' style='font-size:24px; font-weight:bold;'>"
+				 + "<span class='userName' style='color:black;'>" + this.userName + "</span>"
+				 + "<span class='date' style='color:#999; display:inline-block; margin-left:10px;'>" + repDate + "</span>"
 				 + "</div>"
-				 + "<div class='replyContent'>" + this.repCon + "</div>"
+				 + "<div class='replyContent' style='padding:10px; margin:20px 0;'>" + this.repCon + "</div>"
 				 
 				 + "<c:if test='${member != null}'>"
 				 
-				 + "<div class='replyFooter'>"
-				 + "<button type='button' class='modify' data-repNum='" + this.repNum + "'>M</button>"
-				 + "<button type='button' class='delete' data-repNum='" + this.repNum + "'>D</button>"
+				 + "<div class='replyFooter' style='margin-bottom:10px;'>"
+				 + "<button type='button' style='font-size:14px; border: 1px solid #999; background:none; margin-right:10px;' class='modify' data-repNum='" + this.repNum + "'>M</button>"
+				 + "<button type='button' style='font-size:14px; border: 1px solid #999; background:none; margin-right:10px;' class='delete' data-repNum='" + this.repNum + "'>D</button>"
 				 + "</div>"
 				 
 				 + "</c:if>"
@@ -101,19 +107,19 @@ function replyList() {
 </script>
 		
 </head>
-<body>
-<div id="root">
-	<header id="header">
-		<div id="header_box">
-			<h1 class="title">
-				<a href="../">MOUNTSHOP</a>
-			</h1>
+<body class="single single-product woocommerce woocommerce-page">
+<div id="page">
+	<div class="container">
+		<header id="masthead" class="site-header">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="../" rel="home">Mountshop</a></h1>
+			<h2 class="site-description">Minimalist Portfolio HTML Template</h2>
 		</div>
-	</header>
-
-	<nav id="nav">
-		<div id="nav_box">
-			<ul>
+		<nav id="site-navigation" class="main-navigation">
+		<button class="menu-toggle">Menu</button>
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+		<div class="menu-menu-1-container">
+			<ul id="menu-menu-1" class="menu">
 			<c:if test="${member == null}">
 				<li>
 					<a href="../member/signin">로그인</a>
@@ -144,52 +150,57 @@ function replyList() {
 			</c:if>
 			</ul>
 		</div>
-	</nav>
+		</nav>
+		</header>
 	
-	<section id="container">
-		<div id="container_box">
-		
-			<section id="content">
-				
+	<div id="content" class="site-content">
+		<div id="primary" class="content-area column full">
+			<main id="main" class="site-main" role="main">
+			<div id="container">
+				<div id="content" role="main">
+				<nav class="woocommerce-breadcrumb" itemprop="breadcrumb"><a href="list?c=${view.cateCode}&l=2">${view.cateName}</a> / ${view.gdsName}</nav>
+				<div itemscope itemtype="http://schema.org/Product" class="product">
 				<form role="form" method="post">
 					<input type="hidden" name="gdsNum" value="${view.gdsNum}" />
 				</form>
 				
-				<div class="goods">
-					<div class="goodsImg">
-						<img src="${pageContext.request.contextPath}${view.gdsImg}">
-					</div>
+				<div class="images">
+					<img src="${pageContext.request.contextPath}${view.gdsImg}">
+				</div>
 					
-					<div class="goodsInfo">
-						<p class="gdsName"><span>상품명</span>${view.gdsName}</p>
+					<div class="summary entry-summary" style="border: 10px solid black; border-right: 50px dashed black; padding: 10px; margin-top:50px;">
+						<h1 itemprop="name" class="product_title entry-title gdsName">${view.gdsName}</h1>
+						<div class="woocommerce-product-rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+							<p class="woocommerce-review-link">(<span itemprop="reviewCount" class="count">${count}</span>명의 리뷰)</p>
+						</div>
 						
-						<p class="cateName"><span>카테고리</span>${view.cateName}</p>
+						<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+							<p class="price">
+								<span class="amount"><fmt:formatNumber pattern="###,###,###" value="${view.gdsPrice}" /></span> ￦
+							</p>
+						</div>
 						
-						<p class="gdsPrice">
-							<span>가격 </span><fmt:formatNumber pattern="###,###,###" value="${view.gdsPrice}" /> 원
-						</p>
-						
-						<p class="gdsStock">
-							<span>재고 </span><fmt:formatNumber pattern="###,###,###" value="${view.gdsStock}" /> EA
-						</p>
+						<div itemprop="description">
+							<p>
+								<span>재고 : </span><fmt:formatNumber pattern="###,###,###" value="${view.gdsStock}" /> EA
+							</p>
+						</div>
 						
 						<c:if test="${view.gdsStock != 0}">
 						
 						<p class="cartStock">
 							<span>구입 수량</span>
-							<button type="button" class="plus">+</button>
-							<input type="number" class="numBox" min="1" max="${view.gdsStock}" value="1" readonly="readonly"/>
-							<button type="button" class="minus">-</button>
+							<button type="button" style="font-size:30px; border:none; background:none;" class="plus">+</button>
+							<input type="number" style="font-size:22px; width:50px; padding:5px; margin:0; border:1px solid #eee;" class="numBox" min="1" max="${view.gdsStock}" value="1" readonly="readonly"/>
+							<button type="button" style="font-size:40px; border:none; background:none;" class="minus">-</button>
 							
 							<input type="hidden" value="${view.gdsStock}" class="gdsStock_hidden" />
 							
 							<script src="../resources/js/user/shop/stockBtn.js"></script>
-													
-							
 						</p>
-						
+					
 						<p class="addToCart">
-							<button type="button" class="addCart_btn">카트에 담기</button>
+							<button type="button" class="single_add_to_cart_button button alt addCart_btn">카트에 담기</button>
 							<script>
 								$(".addCart_btn").click(function(){
 									
@@ -228,65 +239,26 @@ function replyList() {
 						<c:if test="${view.gdsStock == 0}">
 							<p>상품 수량이 부족합니다.</p>						
 						</c:if>
+						
+						<div class="product_meta">
+							<span class="posted_in">카테고리: 
+								<a href="list?c=${view.cateCode}&l=2" rel="tag">${view.cateName}</a> 
+							</span>
+						</div>
 					</div>
 					
-					<div class="gdsDes">${view.gdsDes}</div>
-				</div>
+					<div class="woocommerce-tabs wc-tabs-wrapper">
+						<div class="panel entry-content wc-tab" id="tab-description">
+							<h1><b>상품 설명</b></h1>
+							<p>
+								${view.gdsDes}
+							</p>
+						</div>
+					</div>
 				
-				
-				<div id="reply">
-				
-					<c:if test="${member == null }">
-						<p>리뷰를 남기시려면 <a href="/member/signin">로그인</a>해주세요</p>
-					</c:if>
-					
-					<c:if test="${member != null}">
-					<section class="replyForm">
-						<form action="view" method="post" autocomplete="off">
-						
-							<input type="hidden" name="gdsNum" id="gdsNum" value="${view.gdsNum}">
-						
-							<div class="input_area">
-								<textarea name="repCon" id="repCon"></textarea>
-							</div>
-							
-							<div class="input_area">
-								<button type="button" id="reply_btn">리뷰 남기기</button>
-								
-								<script>
-									$("#reply_btn").click(function(){
-										
-										var formObj = $(".replyForm form[role='form']");
-										var gdsNum = $("#gdsNum").val();
-										var repCon = $("#repCon").val();
-										
-										// ReplyVO 형태로 데이터 생성
-										var data = {
-												gdsNum : gdsNum,
-												repCon : repCon
-												};
-										
-										$.ajax({
-											url : "registReply",
-											type : "post",
-											data : data,
-											success : function(){
-												replyList();  // 리스트 새로고침
-												$("#repCon").val("");  // 텍스트에어리어를 초기화
-											}
-										});
-									});
-								</script>
-								
-							</div>
-							
-						</form>
-					</section>
-					</c:if>
-					
-					<section class="replyList">
+					<section class="replyList" style="padding:30px 0;">
 
-						<ol>
+						<ol style="padding:0; margin:0;">
 						<%--
 						<c:forEach items="${reply}" var="reply">
 							<li>
@@ -350,63 +322,85 @@ function replyList() {
 							});
 						
 						</script>
-
-					</section>
+					</section>				
 				
+				<div id="reply">
 				
-				</div>
-			</section>
-			
-			<aside id="aside">
-					<h3>카테고리</h3>
-					<ul>
-						<li><a href="list?c=100&l=1">무기</a>
-
-							<ul class="low">
-								<li><a href="list?c=101&l=2">돌격소총</a></li>
-								<li><a href="list?c=102&l=2">기관단총</a></li>
-								<li><a href="list?c=103&l=2">경기관총</a></li>
-								<li><a href="list?c=104&l=2">산탄총</a></li>
-								<li><a href="list?c=105&l=2">지정사수소총</a></li>
-								<li><a href="list?c=106&l=2">저격소총</a></li>
-								<li><a href="list?c=107&l=2">기타</a></li>
-							</ul>
+					<c:if test="${member == null }">
+						<p style="font-size:25px; margin-bottom:50px;">리뷰를 남기시려면 <a href="../member/signin">로그인</a>해주세요</p>
+					</c:if>
+					
+					<c:if test="${member != null}">
+					<section class="replyForm" style="padding:30px 0;">
+						<form action="view" method="post" autocomplete="off">
+						
+							<input type="hidden" name="gdsNum" id="gdsNum" value="${view.gdsNum}">
+						
+							<div class="input_area" style="margin:10px 0;">
+								<textarea style="font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:970px; height:150px; resize: none;" name="repCon" id="repCon"></textarea>
+							</div>
 							
-						</li>
-						<li><a href="list?c=200&l=1">탄약</a></li>
-						<li><a href="list?c=300&l=1">방어구</a></li>
-						<li><a href="list?c=400&l=1">회복제</a></li>
-					</ul>
-			</aside>
+							<div class="input_area">
+								<button type="button" id="reply_btn" style="font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc;">리뷰 남기기</button>	
+								
+								<script>
+									$("#reply_btn").click(function(){
+										
+										var formObj = $(".replyForm form[role='form']");
+										var gdsNum = $("#gdsNum").val();
+										var repCon = $("#repCon").val();
+										
+										// ReplyVO 형태로 데이터 생성
+										var data = {
+												gdsNum : gdsNum,
+												repCon : repCon
+												};
+										
+										$.ajax({
+											url : "registReply",
+											type : "post",
+											data : data,
+											success : function(){
+												replyList();  // 리스트 새로고침
+												$("#repCon").val("");  // 텍스트에어리어를 초기화
+											}
+										});
+									});
+								</script>
+								
+							</div>
+							
+						</form>
+					</section>
+					</c:if>
+				</div>
+				</div>
+			</div>
+			</div>
 			
+			</main>
 		</div>
-	</section>
-
-	<footer id="footer">
-		<div id="footer_box">
-			<%@ include file="../include/footer.jsp" %>
-		</div>		
-	</footer>
-
+	</div>	
+	</div>
 </div>
 
 
-<div class="replyModal">
+<div class="replyModal" style="position:relative; z-index:1; display:none;">
 
-	<div class="modalContent">
+	<div class="modalContent" style="position:fixed; top:20%; left:calc(50% - 250px); width:500px; height:250px; padding:20px 10px; background:#fff; border:2px solid #666;">
 		
 		<div>
-			<textarea class="modal_repCon" name="modal_repCon"></textarea>
+			<textarea class="modal_repCon" name="modal_repCon" style="font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:480px; height:225px;"></textarea>
 		</div>
 		
 		<div>
-			<button type="button" class="modal_modify_btn">수정</button>
-			<button type="button" class="modal_cancel">취소</button>
+			<button type="button" class="modal_modify_btn" style="font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc;">수정</button>
+			<button type="button" class="modal_cancel" style="font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc; margin-left:20px;">취소</button>
 		</div>
 		
 	</div>
 
-	<div class="modalBackground"></div>
+	<div class="modalBackground" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.8); z-index:-1;"></div>
 	
 </div>
 
@@ -447,6 +441,22 @@ $(".modal_cancel").click(function(){
 });
 </script>
 
+<footer id="colophon" class="site-footer">
+	<div class="container">
+		<div class="site-info">
+			<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Mountshop</h1>
+			Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+
+		</div>
+	</div>
+</footer>
+<a href="#top" class="smoothup" title="Back to top"><span class="genericon genericon-collapse"></span></a>
+
+<!-- #page -->
+<script src='../resources/js/jquery.js'></script>
+<script src='../resources/js/plugins.js'></script>
+<script src='../resources/js/scripts.js'></script>
+<script src='../resources/js/masonry.pkgd.min.js'></script>
 
 </body>
 </html>

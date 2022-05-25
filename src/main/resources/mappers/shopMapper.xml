@@ -152,4 +152,7 @@ select
          and o.orderId = #{orderId}
 </select>
 
+<select id="replyCountByNum" parameterType="int" resultType="int">
+	select count(*) from tbl_reply where gdsnum = #{gdsnum}
+</select>
 </mapper>

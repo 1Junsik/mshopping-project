@@ -133,4 +133,11 @@ public class ShopDAO {
 		ShopMapper mapper = session.getMapper(ShopMapper.class);
 		mapper.deleteOrderList(order);
 	}
+	
+	// 카테고리 갯수 세기
+	public int replyCountByNum(int gdsNum) {
+		ShopMapper mapper = session.getMapper(ShopMapper.class);
+		int result = mapper.replyCountByNum(gdsNum);
+		return result;
+	}
 }

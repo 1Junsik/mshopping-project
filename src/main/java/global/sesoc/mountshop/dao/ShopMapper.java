@@ -65,4 +65,7 @@ public interface ShopMapper {
 	// 주문 삭제
 	public void deleteOrderList(OrderVO order);
 	
+	// 카테고리 갯수 세기
+	public int replyCountByNum(int gdsNum);
+	
 }

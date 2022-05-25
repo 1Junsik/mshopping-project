@@ -76,6 +76,9 @@ public class ShopController {
 		GoodsViewVO view = dao.goodsView(gdsNum);
 		model.addAttribute("view", view);
 		
+		// 상품번호로 리플 갯수 세기 
+		int count = dao.replyCountByNum(gdsNum);
+		model.addAttribute("count", count);
 		/*
 		ArrayList<ReplyListVO> reply = dao.replyList(gdsNum);
 		model.addAttribute("reply", reply);
