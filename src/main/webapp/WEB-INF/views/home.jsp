@@ -153,7 +153,7 @@
 	<div class="container">
 		<div class="site-info">
 			<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Mountshop</h1>
-			Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+			<i class="fa fa-love"></i><a href="https://bootstrapthemes.co">사이트 소개</a><br><a href="https://bootstrapthemes.co">이용약관</a>
 
 		</div>
 	</div>	

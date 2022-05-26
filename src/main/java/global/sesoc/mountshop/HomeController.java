@@ -24,11 +24,11 @@ public class HomeController {
 	}
 	
 	/**
-	 * shop.jsp으로 이동
+	 * index1.jsp으로 이동
 	 */
-	@RequestMapping(value = "shop/shop", method = RequestMethod.GET)
-	public String index() {
+	@RequestMapping(value = "admin/index1", method = RequestMethod.GET)
+	public String index1() {
 		
-		return "shop/shop";
+		return "admin/index1";
 	}
 }

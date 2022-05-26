@@ -8,6 +8,13 @@
 
 	<link rel="stylesheet" href="../resources/bootstrap/bootstrap.min.css">
 	<link rel="stylesheet" href="../resources/bootstrap/bootstrap-theme.min.css">
+	<link rel='stylesheet' href='../resources/css/woocommerce-layout.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href='../resources/css/woocommerce-smallscreen.css' type='text/css' media='only screen and (max-width: 768px)'/>
+	<link rel='stylesheet' href='../resources/css/woocommerce.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href='../resources/css/font-awesome.min.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href='../resources/style.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500,700%7CHerr+Von+Muellerhoff:400,500,700%7CQuattrocento+Sans:400,500,700' type='text/css' media='all'/>
+	<link rel='stylesheet' href='../resources/css/easy-responsive-shortcodes.css' type='text/css' media='all'/>
 	<script src="../resources/bootstrap/bootstrap.min.js"></script>
 
 <style>
@@ -22,7 +29,7 @@
 	nav#nav { padding:10px; text-align:right; }
 	nav#nav ul li { display:inline-block; margin-left:10px; }
  
- 	section#container { padding:20px 0; border-top:2px solid #eee; border-bottom:2px solid #eee; }
+ 	section#container { padding:100px 0; border-top:2px solid #eee; border-bottom:2px solid #eee; }
 	section#container::after { content:""; display:block; clear:both; }
 	aside { float:left; width:200px; }
 	div#container_box { float:right; width:calc(100% - 200px - 20px); }
@@ -73,8 +80,8 @@
 				<li><a href="">유저 목록</a></li>
 			</ul>
 		</aside>
-		<div id="container_box">
-			본문 영역
+		<div id="container_box" style="font-size:30px;">
+			관리자님 ! 오늘도 좋은 하루 되세요 :)
 		</div>
 	</section>
 
