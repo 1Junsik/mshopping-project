@@ -107,7 +107,7 @@ div.footnote_desc {
       <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
       <div class="menu-menu-1-container">
          <ul id="menu-menu-1" class="menu">
-            <li><a href="../shop/list?c=100&l=1">Hiking</a>
+            <li><a href="./shop/list?c=100&l=1">Hiking</a>
             <ul class="sub-menu">
                <li><a href='./shop/list?c=101&l=2'>등산화</a></li>
                <li><a href='./shop/list?c=102&l=2'>등산복 상의</a></li>
