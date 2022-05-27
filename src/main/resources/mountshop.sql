@@ -18,7 +18,7 @@ create table tbl_member (
 -- 상품 테이블 (TBL_GOODS)
 create table tbl_goods (
     gdsNum       number          not null,          -- 상품 번호
-    gdsName      varchar2(50)    not null,          -- 상품 이름 
+    gdsName      varchar2(300)    not null,          -- 상품 이름 
     cateCode     varchar2(30)    not null,          -- 분류
     gdsPrice     number          not null,          -- 가격
     gdsStock     number          null,              -- 수량
@@ -196,6 +196,23 @@ insert into goods_category (cateName, cateCode, cateCodeRef) values ('기타', '
 
 
 
+-- 채팅방 테이블
+create table tbl_chatting (
+    chatNum         number                  not null,		    -- 채팅방 번호
+    userId          varchar2(50)            not null,			-- 아이디
+    userName        varchar2(30)            not null,			-- 닉네임
+    chCon           varchar2(2000)          not null,			-- 채팅방 내용
+    primary key(chatNum)
+);
+
+-- 채팅창 번호(chatNum)로 이용될 시퀀스
+create sequence tbl_chatting_seq;
+
+
+-- 채팅창 테이블과 회원 테이블의 참조 설정
+alter table tbl_chatting
+    add constraint tbl_chatting_userId foreign key(userId)
+    references tbl_member(userId) on delete cascade;
 
 
 

@@ -63,6 +63,9 @@
 	</div>
 	<div>
 		<a href="../mountshop">메인화면</a>
+		<c:if test="${userid == '관리자'}">
+			<a href="#" id="allDelete">전체삭제</a>
+		</c:if>
 	</div>
 </div>
 
@@ -113,9 +116,9 @@ function onMessage(msg) {
     //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
 	if(sessionId == cur_session){
 		
-		var str = "<div class='chat_wrap'>";
+		var str = "<div class='msgArea'>";
 		str += "<div class='chat_ul'>";
-		str += "<b>" + sessionId + " : " + message + "</b>";
+		str += "<b class='sender'>" + sessionId + " <br> " + "</b>" + "<b class='message'>" + message + "</b>";
 		str += "</div></div>";
 		
 		$("#msgArea").append(str);
@@ -123,7 +126,7 @@ function onMessage(msg) {
 	else{
 		
 		var str = "<div class='msgArea'>";
-		str += "<div class='chat_ul'>";
+		str += "<div class='chat_ul' style='text-align: right;'>";
 		str += "<b class='sender'>" + sessionId + " <br> " + "</b>" + "<b class='message'>" + message + "</b>";
 		str += "</div></div>";
 		
@@ -132,7 +135,22 @@ function onMessage(msg) {
     
     let chat = document.querySelector('#msgArea');
     msgArea.scrollTop = msgArea.scrollHeight;
-	
+    
+	var data = {
+			message : message
+			};
+    
+	$.ajax({ 
+		url : "addChat",
+		type : "post",
+		data: data,
+        async : false,
+		success: function(result) { 
+			if(result == 1) {
+				alert("메세지 저장 성공");
+			}
+		}
+	});
 }
 //채팅창에서 나갔을 때
 function onClose(evt) {
@@ -149,6 +167,35 @@ function onOpen(evt) {
 	var str = user + "님! 채팅은 익명성이 보장되니, 안심하고 유저들과 소통해주세요 :)";
 	
 	$("#msgIntro").append(str);
+	
+	$.ajax({ 
+		url : "chatList",
+		type : "post",
+        async : false,
+		success: function(data) { 
+			alert("메세지 이력 불러오기 성공!");
+			$(data).each(function(data) {
+				if(user == this.userName){
+					
+					var str = "<div class='msgArea'>";
+					str += "<div class='chat_ul'>";
+					str += "<b class='sender'>" + this.userName + " <br> " + "</b>" + "<b class='message'>" + this.chCon + "</b>";
+					str += "</div></div>";
+					
+					$("#msgArea").append(str);
+				}
+				else{
+					
+					var str = "<div class='msgArea'>";
+					str += "<div class='chat_ul' style='text-align: right;'>";
+					str += "<b class='sender'>" + this.userName + " <br> " + "</b>" + "<b class='message'>" + this.chCon + "</b>";
+					str += "</div></div>";
+					
+					$("#msgArea").append(str);
+				}
+			});
+		}
+	});
 }
 
 //입력란에서 엔터쳤을 때 서버로 메시지 전송
@@ -158,5 +205,24 @@ function textKeyPress(event) {
 	}
 }
 </script>
+
+<c:if test="${userid == '관리자'}">
+	<!-- 채팅 전체 삭제 관련 스크립트  -->
+	<script type="text/javascript">
+		$("#allDelete").on("click", function() {
+			var flag = confirm('관리자님, 채팅 이력 전체 삭제 하시겠습니까?');
+		
+			if(flag) {
+				$.ajax({
+					url : "allDelete",
+					type : "post",
+					success : function(){
+						location.reload(true);
+					}
+				});
+			}
+		});
+</script>
+</c:if>
 </body>
 </html>

@@ -15,11 +15,13 @@
 		 <typeAlias type="global.sesoc.mountshop.vo.OrderVO" alias="order" /> 
 		 <typeAlias type="global.sesoc.mountshop.vo.OrderDetailVO" alias="orderdetail" /> 
 		 <typeAlias type="global.sesoc.mountshop.vo.OrderListVO" alias="orderlist" /> 
+		 <typeAlias type="global.sesoc.mountshop.vo.ChatVO" alias="chat" />
 	</typeAliases>
 	
 	<mappers>
 		 <mapper resource="mappers/memberMapper.xml" />  
 		 <mapper resource="mappers/adminMapper.xml" />  
 		 <mapper resource="mappers/shopMapper.xml" />  
+		 <mapper resource="mappers/chatMapper.xml" /> 
 	</mappers>
 </configuration>

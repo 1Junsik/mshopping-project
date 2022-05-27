@@ -33,10 +33,12 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		}
 		
 		
+		/*
 		if(member.getVerify() != 9) {
 			res.sendRedirect(req.getContextPath());
 			return false;
 		}
+		*/
 		
 		//로그인 된 경우 요청한 경로로 진행
 		return super.preHandle(req, res, obj);

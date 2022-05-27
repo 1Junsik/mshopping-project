@@ -1,6 +1,7 @@
 package global.sesoc.mountshop;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,8 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import global.sesoc.mountshop.dao.ChatDAO;
+import global.sesoc.mountshop.vo.ChatVO;
 import global.sesoc.mountshop.vo.MemberVO;
 
 //클라이언트와 WebSocket을 이용한 메시지 송수신
@@ -21,7 +24,6 @@ public class ChattingHandler extends TextWebSocketHandler {
 
 	//채팅에 참여한 클라이언트들과의 연결
 	ArrayList<WebSocketSession> list = new ArrayList<>();
-	
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -39,8 +41,15 @@ public class ChattingHandler extends TextWebSocketHandler {
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+		
 		logger.info("서버측 수신 : {}, ID: {}", message.getPayload(), session.getId());
-		TextMessage msg = new TextMessage("익명"+session.getId() + ": " + message.getPayload());
+		
+		Map<String,Object> map = session.getAttributes();  
+		MemberVO member = (MemberVO) map.get("member");
+		String userName = member.getUserName();
+		
+		TextMessage msg = new TextMessage(userName + ": " + message.getPayload());
+		
 		
 		for(WebSocketSession ss: list) {
 			ss.sendMessage(msg);

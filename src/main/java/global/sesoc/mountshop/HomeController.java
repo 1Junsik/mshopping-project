@@ -31,4 +31,13 @@ public class HomeController {
 		
 		return "admin/index1";
 	}
+	
+	  /**
+	   * 사이트 소개(intro.jsp)로 이동
+	   */
+	  @RequestMapping(value = "intro", method = RequestMethod.GET)
+	  public String intro() {
+	      
+	     return "intro";
+	  }
 }

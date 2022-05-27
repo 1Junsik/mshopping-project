@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.mountshop.dao.ChatMapper">
+
+<insert id="insertChat" parameterType="chat">
+	insert into tbl_chatting 
+		(chatNum, userId, userName, chCon) 
+		values 
+			(tbl_chatting_seq.nextval, #{userId}, #{userName}, #{chCon}) 
+</insert>
+
+<select id="chatList" resultType="chat">
+	select userId, userName, chCon from tbl_chatting order by chatNum asc
+</select>
+
+<delete id="allDelete">
+	delete from tbl_chatting
+</delete>
+</mapper>
