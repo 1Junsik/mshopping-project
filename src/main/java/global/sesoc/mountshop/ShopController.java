@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import global.sesoc.mountshop.dao.ShopDAO;
+import global.sesoc.mountshop.utils.PageNavigator;
 import global.sesoc.mountshop.vo.CartListVO;
 import global.sesoc.mountshop.vo.CartVO;
 import global.sesoc.mountshop.vo.CategoryVO;
@@ -38,32 +39,101 @@ public class ShopController {
 	ShopDAO dao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ShopController.class);
+	
+	// 페이징 관련 상수값들
+	final int countPerPage = 8;		// 페이지당 글 수
+	final int pagePerGroup = 5;			// 페이지 이동 링크를 표시할 페이지 수
+	
+	// 전체 상품 리스트 (GET)
+	@RequestMapping(value = "allList", method = RequestMethod.GET)
+	public String getAllList(@RequestParam(value="t", defaultValue="") String searchText, 
+							 @RequestParam(value="page", defaultValue="1") int page, Model model) {
+		logger.info("get allList");
+		
+		ArrayList<GoodsViewVO> list = null;
+		int count = 0; // 전체 상품 총 갯수 
+		
+		count = dao.goodsTotal_All(searchText);
+		
+		// 페이지 계산을 위한 객체 생성
+		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, count);
+		
+		// 검색어와 시작 위치, 페이지당 글 수를 전달하여 목록 읽기
+		list = dao.list_All(searchText, navi.getStartRecord(), navi.getCountPerPage());
+		
+		model.addAttribute("list", list);
+		model.addAttribute("navi", navi);
+		model.addAttribute("count", count);
+		
+		model.addAttribute("searchText", searchText);
+		
+		return "shop/list";
+	}
 
 	// 카테고리별 상품 리스트 (GET)
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String getList(@RequestParam("c") String cateCode,
-						  @RequestParam("l") String level, Model model, CategoryVO vo) {
+						  @RequestParam("l") String level, 
+						  @RequestParam(value="t", defaultValue="") String searchText, 
+						  @RequestParam(value="pages", defaultValue="1") int page, Model model, CategoryVO vo) {
 		logger.info("get list");
 //		logger.info("cateCode : {}, level : {}", cateCode, level);
+		logger.info("검색어 : {}", searchText);
+		logger.info("현재 페이지 : {}", page);
 		
 		String cateCodeRef = "0";  // 카테고리 참조 코드. 없어도 무관
 		
 		if(level.equals("1")) { // level 1 = 1차 분류
 			ArrayList<GoodsViewVO> list = null;
+			int count = 0; // level 1, 상품 총 갯수 
 			cateCodeRef = cateCode;
 			
 			vo.setCateCode(cateCode);
 			vo.setCateCodeRef(cateCodeRef);
 			
-			list = dao.list_1(vo);
+			count = dao.goodsTotal_1(vo, searchText);
+			
+			// 페이지 계산을 위한 객체 생성
+			PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, count);
+			
+			list = dao.list_1(vo, searchText, navi.getStartRecord(), navi.getCountPerPage());
+			
 			model.addAttribute("list", list);
-		} else {	// level 2 = 2차분류
+			model.addAttribute("navi", navi);
+		} else if(level.equals("2")) {	// level 2 = 2차분류
 			ArrayList<GoodsViewVO> list = null;
+			int count = 0; // level 2, 상품 총 갯수
 			
-			list = dao.list_2(cateCode);
+			count = dao.goodsTotal_2(cateCode, searchText);
+			
+			// 페이지 계산을 위한 객체 생성
+			PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, count);
+			
+			list = dao.list_2(cateCode, searchText, navi.getStartRecord(), navi.getCountPerPage());
+			
 			
 			model.addAttribute("list", list);
+			model.addAttribute("navi", navi);
+		} else {	// 전체 상품 
+			logger.info("get allList");
+			ArrayList<GoodsViewVO> list = null;
+			int count = 0; // 전체 상품 총 갯수 
+			
+			count = dao.goodsTotal_All(searchText);
+			
+			// 페이지 계산을 위한 객체 생성
+			PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, count);
+			
+			// 검색어와 시작 위치, 페이지당 글 수를 전달하여 목록 읽기
+			list = dao.list_All(searchText, navi.getStartRecord(), navi.getCountPerPage());
+			
+			model.addAttribute("list", list);
+			model.addAttribute("navi", navi);
 		}
+		
+		model.addAttribute("level", level);
+		model.addAttribute("cateCode", cateCode);
+		model.addAttribute("searchText", searchText);
 		
 		return "shop/list";
 	}
@@ -265,7 +335,8 @@ public class ShopController {
 	
 	// 주문 목록
 	@RequestMapping(value = "orderList", method = RequestMethod.GET)
-	public String getOrderList(HttpSession session, OrderVO order, Model model) {
+	public String getOrderList(HttpSession session, OrderVO order, Model model,
+							   @RequestParam(value="pages", defaultValue="1") int page) {
 		logger.info("get order list");
 		
 		MemberVO member = (MemberVO)session.getAttribute("member");
@@ -273,9 +344,18 @@ public class ShopController {
 		
 		order.setUserId(userId);
 		
-		ArrayList<OrderVO> orderList = dao.orderList(order);
+		ArrayList<OrderVO> orderList = null;
+		int count = 0; // 유저 주문 목록 총 갯수
+		
+		count = dao.orderTotalByUser(order);
+		
+		// 페이지 계산을 위한 객체 생성
+		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, count);	
+		
+		orderList = dao.orderList(order, navi.getStartRecord(), navi.getCountPerPage());
 		
 		model.addAttribute("orderList", orderList);
+		model.addAttribute("navi", navi);		
 		
 		return "shop/orderList";
 	}

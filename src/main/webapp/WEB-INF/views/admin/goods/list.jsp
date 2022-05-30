@@ -56,6 +56,23 @@
 #container_box table img { width:150px; height:auto; }
 </style>
 
+<style>
+.input-area {
+	display: flex;
+	justify-content: center;
+	margin-top: 1.5em;
+}
+
+.input-box {
+  width: 50em;
+  height: 46px;
+  border-radius: 24px;
+  border: 1px solid #dfe1e5;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+</style>
+
 </head>
 <body>
 <div id="root">
@@ -94,9 +111,19 @@
 				<li><a href="">유저 목록</a></li>
 			</ul>
 		</aside>
-		<div id="container_box">
+		<div id="container_box" style="display: flex; justify-content: center;flex-wrap: wrap;" >
 			<!--  <h2>상품 목록</h2> -->
-			<table>
+			<form id="pagingForm" action="list" method="get">
+   				<div class="input-area">
+        			<input type="text" name="t" class="input-box" value="${searchText}" placeholder="상품 이름 검색"/>
+        			<input type="hidden" name="pages" id="pages"/>
+					<input type="button" onclick="pagingFormSubmit(1)" value="검색">
+        		</div>			
+   			</form>
+   			
+   			<br>
+   			
+			<table class="input-box" style="margin-top:1.5em">
 				<thead>
 					<tr>
 						<th>썸네일</th>
@@ -131,9 +158,36 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			
 		</div>
 	</section>
+	
+		<!-- 페이지 이동 부분 -->
+	<div id="container_box" style="font-size: 20px; display:flex; justify-content:center;">                      
+		<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
+		<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;
+
+		<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
+			<c:if test="${counter == navi.currentPage}"><b></c:if>
+				<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
+			<c:if test="${counter == navi.currentPage}"></b></c:if>
+		</c:forEach>
+		&nbsp;
+		<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
+		<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+
+		<!-- /페이지 이동 끝 -->                      
+	</div>
+		<br><br>
+	
+		
+	<script>
+		function pagingFormSubmit(currentPage) {
+		var form = document.getElementById('pagingForm');
+		var page = document.getElementById('pages');
+		page.value = currentPage;
+		form.submit();
+	}
+	</script>
 
 	<footer id="footer">
 		<div id="footer_box">
@@ -146,6 +200,5 @@
 	</footer>
 
 </div>
-
 </body>
 </html>

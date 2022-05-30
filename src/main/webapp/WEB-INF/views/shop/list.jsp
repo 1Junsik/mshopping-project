@@ -68,18 +68,26 @@
 			<div id="content" class="site-content">
 				<div id="primary" class="content-area column full">
 					<main id="main" class="site-main" role="main">
-						<p class="woocommerce-result-count">Showing 1–8 of 12 results
+						<p class="woocommerce-result-count">${navi.totalRecordsCount} results
 						</p>
-						<form class="woocommerce-ordering" method="get">
-							<select name="orderby" class="orderby">
-								<option value="menu_order" selected="selected">기본 정렬</option>
-								<option value="popularity">Sort by popularity</option>
-								<option value="rating">Sort by average rating</option>
-								<option value="date">Sort by newness</option>
-								<option value="price">Sort by price: low to high</option>
-								<option value="price-desc">Sort by price: high to low</option>
-							</select>
+						<form id="pagingForm" class="woocommerce-ordering" method="get" action="list">
+							상품 검색
+							<input type="hidden" name="c" value="${cateCode}">
+							<input type="hidden" name="l" value="${level}">
+							<input type="text"   name="t" value="${searchText}" class="orderby">
+							<input type="hidden" name="pages" id="pages"/>
+							<input type="button" onclick="pagingFormSubmit(1)" value="검색">
 						</form>
+						
+						<script>
+						function pagingFormSubmit(currentPage) {
+							var form = document.getElementById('pagingForm');
+							var page = document.getElementById('pages');
+							page.value = currentPage;
+							form.submit();
+						}
+						</script>
+						
 						<ul class="products">
 							<c:forEach items="${list}" var="list" varStatus="status">
 								<c:if test="${status.index % 4 == 0}">
@@ -103,13 +111,23 @@
 								</li>
 							</c:forEach>
 						</ul>
-						<nav class="woocommerce-pagination">
-							<ul class="page-numbers">
-								<li><span class="page-numbers current">1</span></li>
-								<li><a class="page-numbers" href="#">2</a></li>
-								<li><a class="next page-numbers" href="#">→</a></li>
-							</ul>
-						</nav>
+						<!-- 페이지 이동 부분 -->
+						<div style="font-size: 20px; display:flex; justify-content:center;">                      
+							<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
+							<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;
+
+							<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
+								<c:if test="${counter == navi.currentPage}"><b></c:if>
+									<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
+								<c:if test="${counter == navi.currentPage}"></b></c:if>
+							</c:forEach>
+							&nbsp;
+							<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
+							<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+
+							<!-- /페이지 이동 끝 -->                      
+						</div>
+							<br><br>
 					</main>
 					<!-- #main -->
 				</div>

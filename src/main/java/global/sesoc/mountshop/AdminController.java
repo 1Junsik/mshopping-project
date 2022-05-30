@@ -28,6 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import global.sesoc.mountshop.dao.AdminDAO;
 import global.sesoc.mountshop.dao.MemberDAO;
+import global.sesoc.mountshop.utils.PageNavigator;
 import global.sesoc.mountshop.utils.UploadFileUtils;
 import global.sesoc.mountshop.vo.CategoryVO;
 import global.sesoc.mountshop.vo.GoodsVO;
@@ -50,6 +51,10 @@ public class AdminController {
 	private String uploadPath;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+	
+	// 페이징 관련 상수값들
+	final int countPerPage = 8;		// 페이지당 글 수
+	final int pagePerGroup = 5;			// 페이지 이동 링크를 표시할 페이지 수
 
 	// 관리자화면
 	@RequestMapping(value = "index", method = RequestMethod.GET)
@@ -114,11 +119,22 @@ public class AdminController {
 	
 	// 상품 목록 (GET)
 	@RequestMapping(value = "goods/list", method = RequestMethod.GET)
-	public String getGoodslist(Model model) {
+	public String getGoodslist(@RequestParam(value="t", defaultValue="") String searchText,
+							   @RequestParam(value="pages", defaultValue="1") int page, Model model) {
 		logger.info("get Goods list");
 		
-		ArrayList<GoodsViewVO> list = dao.goodslist();
+		ArrayList<GoodsViewVO> list = null; 
+		int count = 0; // 상품 목록 총 갯수
+		
+		count = dao.goodsTotal_All(searchText);
+		
+		// 페이지 계산을 위한 객체 생성
+		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, count);		
+		
+		list = dao.goodslist(searchText, navi.getStartRecord(), navi.getCountPerPage());
 		model.addAttribute("list", list);
+		model.addAttribute("navi", navi);
+		model.addAttribute("searchText", searchText);
 	
 		return "admin/goods/list";
 	}
@@ -245,12 +261,23 @@ public class AdminController {
 	
 	// 주문 목록
 	@RequestMapping(value = "shop/orderList", method = RequestMethod.GET)
-	public String getOrderList(Model model) {
+	public String getOrderList(@RequestParam(value="t", defaultValue="") String searchText, 
+							   @RequestParam(value="pages", defaultValue="1") int page, Model model) {
 	 logger.info("get order list");
-	   
-	 ArrayList<OrderVO> orderList = dao.orderList();
+	 
+	 ArrayList<OrderVO> orderList =  null; 
+	 int count = 0; // 주문 목록 총 갯수
+	 
+	 count = dao.orderTotal_All(searchText);
+	 
+	 // 페이지 계산을 위한 객체 생성
+	 PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, count);
+	 
+	 orderList = dao.orderList(searchText, navi.getStartRecord(), navi.getCountPerPage());
 	 
 	 model.addAttribute("orderList", orderList);
+	 model.addAttribute("searchText", searchText);
+	 model.addAttribute("navi", navi);
 	 
 	 return "admin/shop/orderList";
 	}
@@ -290,12 +317,24 @@ public class AdminController {
 	
 	// 모든 리플
 	@RequestMapping(value = "shop/allReply", method = RequestMethod.GET)
-	public String getAllReply(Model model) {
+	public String getAllReply(@RequestParam(value="t", defaultValue="") String searchText, 
+			   				  @RequestParam(value="pages", defaultValue="1") int page, Model model) {
+		
 	 logger.info("get all reply");
 	   
-	 ArrayList<ReplyListVO> reply = dao.allReply();
+	 ArrayList<ReplyListVO> reply = null;
+	 int count = 0; // 리플 총 갯수
+	 
+	 count = dao.replyTotal_All(searchText);
+	 
+	 // 페이지 계산을 위한 객체 생성
+	 PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, count);
+	 
+	 reply = dao.allReply(searchText, navi.getStartRecord(), navi.getCountPerPage());
 	 
 	 model.addAttribute("reply", reply);
+	 model.addAttribute("navi", navi);
+	 model.addAttribute("searchText", searchText);
 	 
 	 return "admin/shop/allReply";
 	}

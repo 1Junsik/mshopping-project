@@ -2,6 +2,7 @@ package global.sesoc.mountshop.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,16 +25,24 @@ public class ShopDAO {
 	SqlSession session;
 	
 	// 카테고리별 상품 리스트 : 1차 분류
-	public ArrayList<GoodsViewVO> list_1(CategoryVO vo) {
+	public ArrayList<GoodsViewVO> list_1(CategoryVO vo, String searchText, int startRecord, int countPerPage) {
 		ShopMapper mapper = session.getMapper(ShopMapper.class);
-		ArrayList<GoodsViewVO> result = mapper.list_1(vo);
+		
+		// 전체 검색 결과 중 읽을 시작위치와 개수
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		
+		ArrayList<GoodsViewVO> result = mapper.list_1(vo, searchText, rb);
 		return result;
 	}
 
 	// 카테고리별 상품 리스트 : 2차 분류
-	public ArrayList<GoodsViewVO> list_2(String cateCode) {
+	public ArrayList<GoodsViewVO> list_2(String cateCode, String searchText, int startRecord, int countPerPage) {
 		ShopMapper mapper = session.getMapper(ShopMapper.class);
-		ArrayList<GoodsViewVO> result = mapper.list_2(cateCode);
+		
+		// 전체 검색 결과 중 읽을 시작위치와 개수
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		
+		ArrayList<GoodsViewVO> result = mapper.list_2(cateCode, searchText, rb);
 		return result;
 	}
 	
@@ -115,9 +124,13 @@ public class ShopDAO {
 	}
 
 	// 주문 목록
-	public ArrayList<OrderVO> orderList(OrderVO order) {
+	public ArrayList<OrderVO> orderList(OrderVO order, int startRecord, int countPerPage) {
 		ShopMapper mapper = session.getMapper(ShopMapper.class);
-		ArrayList<OrderVO> result = mapper.orderList(order);
+		
+		// 전체 검색 결과 중 읽을 시작위치와 개수
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		
+		ArrayList<OrderVO> result = mapper.orderList(order, rb);
 		return result;
 	}
 
@@ -138,6 +151,45 @@ public class ShopDAO {
 	public int replyCountByNum(int gdsNum) {
 		ShopMapper mapper = session.getMapper(ShopMapper.class);
 		int result = mapper.replyCountByNum(gdsNum);
+		return result;
+	}
+	
+	// 1차 분류 : 상품 총 갯수 
+	public int goodsTotal_1(CategoryVO vo, String searchText) {
+		ShopMapper mapper = session.getMapper(ShopMapper.class);
+		int result = mapper.goodsTotal_1(vo, searchText);
+		return result;
+	}
+	
+	// 2차 분류 : 상품 총 갯수
+	public int goodsTotal_2(String cateCode, String searchText) {
+		ShopMapper mapper = session.getMapper(ShopMapper.class);
+		int result = mapper.goodsTotal_2(cateCode, searchText);
+		return result;
+	}
+	
+	// 전체 상품 리스트
+	public ArrayList<GoodsViewVO> list_All(String searchText, int startRecord, int countPerPage) {
+		ShopMapper mapper = session.getMapper(ShopMapper.class);
+		// 전체 검색 결과 중 읽을 시작위치와 개수
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		
+		// 검색어와 읽을 범위를 전달
+		ArrayList<GoodsViewVO> result = mapper.list_All(searchText, rb);
+		return result;
+	}
+	
+	// 전체 상품 총 갯수
+	public int goodsTotal_All(String searchText) {
+		ShopMapper mapper = session.getMapper(ShopMapper.class);
+		int result = mapper.goodsTotal_All(searchText);
+		return result;
+	}
+	
+	// 유저 주문 목록 총 갯수
+	public int orderTotalByUser(OrderVO order) {
+		ShopMapper mapper = session.getMapper(ShopMapper.class);
+		int result = mapper.orderTotalByUser(order);
 		return result;
 	}
 }

@@ -2,6 +2,7 @@ package global.sesoc.mountshop.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,9 +35,14 @@ public class AdminDAO {
 	}
 	
 	// 상품목록
-	public ArrayList<GoodsViewVO> goodslist() {
+	public ArrayList<GoodsViewVO> goodslist(String searchText, int startRecord, int countPerPage) {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
-		ArrayList<GoodsViewVO> result = mapper.goodslist();
+		
+		// 전체 검색 결과 중 읽을 시작위치와 개수
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		
+		ArrayList<GoodsViewVO> result = mapper.goodslist(searchText, rb);
+		
 		return result;
 	}
 	
@@ -60,9 +66,13 @@ public class AdminDAO {
 	}
 
 	// 주문 목록
-	public ArrayList<OrderVO> orderList() {
+	public ArrayList<OrderVO> orderList(String searchText, int startRecord, int countPerPage) {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
-		ArrayList<OrderVO> result = mapper.orderList();
+		
+		// 전체 검색 결과 중 읽을 시작위치와 개수
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		
+		ArrayList<OrderVO> result = mapper.orderList(searchText, rb);
 		return result;
 	}
 	
@@ -86,9 +96,13 @@ public class AdminDAO {
 	}
 	
 	// 모든 리플 
-	public ArrayList<ReplyListVO> allReply() {
+	public ArrayList<ReplyListVO> allReply(String searchText, int startRecord, int countPerPage) {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
-		ArrayList<ReplyListVO> result = mapper.allReply();
+		
+		// 전체 검색 결과 중 읽을 시작위치와 개수
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		
+		ArrayList<ReplyListVO> result = mapper.allReply(searchText, rb);
 		return result;
 	}
 	
@@ -102,6 +116,28 @@ public class AdminDAO {
 	public void deleteOrderList(OrderVO order) {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
 		mapper.deleteOrderList(order);
+	}
+
+	// 전체 상품 총 갯수
+	public int goodsTotal_All(String searchText) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		int result = mapper.goodsTotal_All(searchText);
+		return result;
+	}
+	
+	// 주문 목록 총 갯수
+	public int orderTotal_All(String searchText) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		int result = mapper.orderTotal_All(searchText);
+		return result;
+	}
+	
+	
+	// 리플 총 갯수
+	public int replyTotal_All(String searchText) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		int result = mapper.replyTotal_All(searchText);
+		return result;
 	}
 	
 }

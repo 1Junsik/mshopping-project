@@ -62,6 +62,23 @@
 	.orderList div div button { border:2px solid #999; background:#fff; }
 </style>
 
+<style>
+.input-area {
+	display: flex;
+	justify-content: center;
+	margin-top: 1.5em;
+}
+
+.input-box {
+  width: 50em;
+  height: 46px;
+  border-radius: 24px;
+  border: 1px solid #dfe1e5;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+</style>
+
 
 </head>
 <body>
@@ -103,6 +120,16 @@
 		</aside>
 		<div id="container_box">
 		
+		<form id="pagingForm" action="orderList" method="get">
+   			<div class="input-area">
+   				<input type="text" name="t" class="input-box" value="${searchText}" placeholder="수령인 검색"/>
+        		<input type="hidden" name="pages" id="pages"/>
+				<input type="button" onclick="pagingFormSubmit(1)" value="검색">
+        	</div>			
+   		</form>
+   			
+   			<br>
+		
 		<ul class="orderList">
 				<c:forEach items="${orderList}" var="orderList">
 				<li>
@@ -128,6 +155,24 @@
 			
 		</div>
 	</section>
+	
+<!-- 페이지 이동 부분 -->
+<div style="font-size: 20px; display:flex; justify-content:center;">                      
+	<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
+	<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;
+
+	<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
+		<c:if test="${counter == navi.currentPage}"><b></c:if>
+			<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
+		<c:if test="${counter == navi.currentPage}"></b></c:if>
+	</c:forEach>
+	&nbsp;
+	<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
+	<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+
+	<!-- /페이지 이동 끝 -->                      
+</div>
+	<br><br>
 
 	<footer id="footer">
 		<ul>
@@ -138,6 +183,15 @@
 	</footer>
 
 </div>
+
+<script>
+function pagingFormSubmit(currentPage) {
+	var form = document.getElementById('pagingForm');
+	var page = document.getElementById('pages');
+	page.value = currentPage;
+	form.submit();
+}
+</script>
 
 </body>
 </html>

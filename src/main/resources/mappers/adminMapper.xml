@@ -40,6 +40,7 @@
          from tbl_goods g
              inner join goods_category c
                  on g.cateCode = c.cateCode
+             where upper(g.gdsName) like '%' || upper(#{searchText}) || '%' 
 </select>
 
 <!-- 상품 조회 -->
@@ -96,12 +97,13 @@ select
 </select>
 
 <!-- 모든 유저의 주문 목록 -->
-<select id="orderList" resultType="order">
+<select id="orderList" parameterType="string" resultType="order">
  select
      orderId, userId, orderRec,
      userAddr1, userAddr2, userAddr3,
      orderPhon, amount, orderDate, delivery
  from tbl_order
+ where upper(orderRec) like '%' || upper(#{searchText}) || '%' 
 </select>
 
 <!-- 특정 주문 목록 -->
@@ -142,6 +144,7 @@ select
  from tbl_reply r
       inner join tbl_member m
          on r.userId = m.userId
+      where upper(m.userName) like '%' || upper(#{searchText}) || '%'
 </select>
 
 <!-- 소감(댓글) 지우기 -->
@@ -156,6 +159,33 @@ select
 		where orderId = #{orderId}
 </delete>
 
+<!-- 전체 상품 총 갯수  -->
+<select id="goodsTotal_All" parameterType="string" resultType="int">
+ select
+	count(*)
+         from tbl_goods g
+             inner join goods_category c
+                 on g.cateCode = c.cateCode
+             where upper(g.gdsName) like '%' || upper(#{searchText}) || '%' 	
+</select>
+
+ <!-- 주문 목록 총 갯수 -->
+ <select id="orderTotal_All" parameterType="string" resultType="int">
+ select
+ 	count(*)
+ from tbl_order     
+ where upper(orderRec) like '%' || upper(#{searchText}) || '%'     
+</select>
+
+ <!-- 리플 총 갯수 -->
+ <select id="replyTotal_All" parameterType="string" resultType="int">
+ select
+	count(*)
+ from tbl_reply r
+      inner join tbl_member m
+         on r.userId = m.userId 
+ 	  where upper(m.userName) like '%' || upper(#{searchText}) || '%'     
+</select>
 
 </mapper>
 

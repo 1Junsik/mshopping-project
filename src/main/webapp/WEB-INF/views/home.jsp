@@ -15,15 +15,59 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500,700%7CHerr+Von+Muellerhoff:400,500,700%7CQuattrocento+Sans:400,500,700' type='text/css' media='all'/>
 <link rel='stylesheet' href='./resources/css/easy-responsive-shortcodes.css' type='text/css' media='all'/>
 
+
+<style>
+/* body {
+  background-color: #eaeaea;
+} */
+
+
+.input-area {
+	display: flex;
+	justify-content: center;
+	margin-top: 1.5em;
+}
+
+.input-box {
+  width: 50em;
+  height: 46px;
+  border-radius: 24px;
+  border: 1px solid #dfe1e5;
+  padding-left: 40px;
+   padding-right: 40px;
+}
+
+input[type="submit"] {
+  background: black;
+  width: 10%;
+}
+
+
+a.portfoliotype {
+font-family: 'Dongle', sans-serif;
+font-style: normal;
+font-size: 25px;
+}
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
+</style>
+
 </head>
+
 <body class="home page page-template page-template-template-portfolio page-template-template-portfolio-php">
 <div id="page">
+
 	<div class="container">
 		<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<h1 class="site-title"><a href="./" rel="home">Mountshop</a></h1>
-			<h2 class="site-description">오늘도 즐거운 하루 되세요 :)</h2>
+			<c:if test="${member == null}"><h2 class="site-description">오늘도 즐거운 하루 되세요 :)</h2></c:if>
+			<c:if test="${member != null}"><h2 class="site-description">${member.userName}님 환영합니다.</h2></c:if>
+			
 		</div>
+
 		<nav id="site-navigation" class="main-navigation">
 		<button class="menu-toggle">Menu</button>
 		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
@@ -37,16 +81,12 @@
 						<a href="member/signup">회원가입</a>
 					</li>
 				</c:if>
-							<c:if test="${member != null}">
-
-				<c:if test="${member.verify == 9}">
-				<li>
-					<a href="admin/index">관리자 화면</a>	
-				</li>	
-				</c:if>
+				<c:if test="${member != null}">
+					<c:if test="${member.verify == 9}">
 					<li>
-						${member.userName}님 환영합니다.
-					</li>
+						<a href="admin/index">관리자 화면</a>	
+					</li>	
+					</c:if>
 					<li>
 						<a href="chatView">채팅방</a>
 					</li>
@@ -74,12 +114,22 @@
 		</div>
 		</nav>
 		</header>
+		
+   		
+   			<form action="shop/allList" method="get">
+   				<div class="input-area">
+        			<input type="text" name="t" class="input-box" placeholder="상품명을 검색해주세요."/>
+        			<input type="submit" value="검색" class="button-box"></input>  
+        		</div>			
+   			</form>
+   		
+	
 		<!-- #masthead -->
 		<div id="content" class="site-content">
 			<div id="primary" class="content-area column full">
 				<main id="main" class="site-main">
 				<div class="grid portfoliogrid">
-				
+			
 					<article class="hentry">
 					<header class="entry-header">
 					<div class="entry-thumbnail">
@@ -165,5 +215,6 @@
 <script src='./resources/js/plugins.js'></script>
 <script src='./resources/js/scripts.js'></script>
 <script src='./resources/js/masonry.pkgd.min.js'></script>
+
 </body>
 </html>

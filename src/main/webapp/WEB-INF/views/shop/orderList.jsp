@@ -177,6 +177,28 @@
 		</div>
 		<!-- #content -->
 	</div>
+	
+	<!-- 페이지 이동 부분 -->
+	<div style="font-size: 20px; display:flex; justify-content:center;">                      
+		<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
+		<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;
+
+		<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
+			<c:if test="${counter == navi.currentPage}"><b></c:if>
+				<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
+			<c:if test="${counter == navi.currentPage}"></b></c:if>
+		</c:forEach>
+		&nbsp;
+		<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
+		<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+
+	<!-- /페이지 이동 끝 -->                      
+	</div>
+		<br><br>
+		
+	<form id="pagingForm" method="get" action="orderList">
+		<input type="hidden" name="pages" id="pages"/>
+	</form>
 	<!-- .container -->
 	<footer id="colophon" class="site-footer">
 	<div class="container">
@@ -194,5 +216,15 @@
 <script src='../resources/js/plugins.js'></script>
 <script src='../resources/js/scripts.js'></script>
 <script src='../resources/js/masonry.pkgd.min.js'></script>
+
+<script>
+function pagingFormSubmit(currentPage) {
+	var form = document.getElementById('pagingForm');
+	var page = document.getElementById('pages');
+	page.value = currentPage;
+	form.submit();
+}
+</script>
+
 </body>
 </html>

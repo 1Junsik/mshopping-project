@@ -6,15 +6,16 @@
 <mapper namespace="global.sesoc.mountshop.dao.ShopMapper">
 
 <!-- 카테고리별 상품 리스트 : 1차 분류 -->
-<select id="list_1" parameterType="category" resultType="goodsview">
+<select id="list_1" resultType="goodsview">
 select
     g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName,
     gdsPrice, gdsStock, gdsDes, gdsDate, g.gdsImg, g.gdsThumbImg
         from tbl_goods g
             inner join goods_category c
                 on g.cateCode = c.cateCode           
-            where g.cateCode = #{cateCode}
-             or c.cateCodeRef = #{cateCodeRef}
+            where g.cateCode = #{vo.cateCode}
+             or c.cateCodeRef = #{vo.cateCodeRef}
+             and upper(g.gdsName) like '%' || upper(#{searchText}) || '%' 
 </select>
 
  <!-- 카테고리별 상품 리스트 : 2차 분류 -->
@@ -26,6 +27,7 @@ select
             inner join goods_category c
                 on g.cateCode = c.cateCode           
             where g.cateCode = #{cateCode}
+            and upper(g.gdsName) like '%' || upper(#{searchText}) || '%'
 </select>
 
 <!-- 상품 조회 + 카테고리 조인-->
@@ -155,4 +157,57 @@ select
 <select id="replyCountByNum" parameterType="int" resultType="int">
 	select count(*) from tbl_reply where gdsnum = #{gdsnum}
 </select>
+
+<!--1차 분류 : 상품 총 갯수  -->
+<select id="goodsTotal_1" parameterType="goodsview" resultType="int">
+	select 
+		count(*) 
+		    from tbl_goods g
+            inner join goods_category c
+                on g.cateCode = c.cateCode           
+            where g.cateCode = #{vo.cateCode}
+             or c.cateCodeRef = #{vo.cateCodeRef}
+             and upper(g.gdsName) like '%' || upper(#{searchText}) || '%'
+</select>
+
+<!-- 2차 분류 : 상품 총 갯수  -->
+ <select id="goodsTotal_2" parameterType="string" resultType="int">
+ select
+ 	 count(*)
+        from tbl_goods g
+            inner join goods_category c
+                on g.cateCode = c.cateCode           
+            where g.cateCode = #{cateCode}
+            and upper(g.gdsName) like '%' || upper(#{searchText}) || '%'
+</select>
+
+ <!-- 전체 상품 리스트 -->
+ <select id="list_All" parameterType="string" resultType="goodsview">
+ select
+    g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName, 
+    gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate, g.gdsImg, g.gdsThumbImg
+        from tbl_goods g
+            inner join goods_category c
+                on g.cateCode = c.cateCode       
+           where upper(g.gdsName) like '%' || upper(#{searchText}) || '%'     
+</select>
+
+ <!-- 전체 상품 총 갯수 -->
+ <select id="goodsTotal_All" parameterType="string" resultType="int">
+ select
+	count(*)
+        from tbl_goods g
+            inner join goods_category c
+                on g.cateCode = c.cateCode       
+           where upper(g.gdsName) like '%' || upper(#{searchText}) || '%'     
+</select>
+
+ <!-- 유저 주문 목록 총 갯수 -->
+ <select id="orderTotalByUser" parameterType="order" resultType="int">
+ select
+     count(*)
+ from tbl_order 
+     where userId = #{userId}        
+</select>
+
 </mapper>
