@@ -176,7 +176,7 @@ function onMessage(msg) {
    else{
       
       var str = "<div class='msgArea'>";
-      str += "<div class='chat_ul' style='text-align: right;' >";
+      str += "<div class='chat_ul' style='text-align: left;' >";
       str += "<b class='sender'>" + sessionId + " <br> " + "</b>" + "<b class='message'>" + message + "</b>";
       str += "</div></div>";
       
