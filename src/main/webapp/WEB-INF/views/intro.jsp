@@ -6,7 +6,7 @@
 <html>
 <head>
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<title>Moschino | Minimalist Free HTML Portfolio by WowThemes.net</title>
+<title>Sankai</title>
 <link rel='stylesheet' href='./resources/css/woocommerce-layout.css' type='text/css' media='all'/>
 <link rel='stylesheet' href='./resources/css/woocommerce-smallscreen.css' type='text/css' media='only screen and (max-width: 768px)'/>
 <link rel='stylesheet' href='./resources/css/woocommerce.css' type='text/css' media='all'/>
@@ -99,7 +99,7 @@ div.footnote_desc {
    <div class="container">
       <header id="masthead" class="site-header">
       <div class="site-branding">
-         <h1 class="site-title"><a href="./" rel="home">Mountshop</a></h1>
+         <h1 class="site-title"><a href="./" rel="home">Sankai</a></h1>
          <h2 class="site-description">오늘도 즐거운 하루 되세요 :)</h2>
       </div>
       <nav id="site-navigation" class="main-navigation">
@@ -158,7 +158,7 @@ div.footnote_desc {
                <div class="tab">
                   <div id="tab-what-is-lore-ipsum" class="tab-content">
                      <p>
-                        등산 및 캠핑 관련 용품 등을 판매하는 쇼핑몰
+                        등산, 캠핑 및 낚시 등 레저 스포츠 관련 용품을 판매하는 쇼핑몰
                      </p>
                   </div>
                </div>
@@ -172,9 +172,9 @@ div.footnote_desc {
                <div class="tab">
                   <div id="tab-what-is-lore-ipsum" class="tab-content">
                      <p><a style="font-weight:bold;font-size:larger;line-height:200%;">①</a>  코로나19 사태에 따른 사회적 거리두기 등 오랫동안 이어진 정부 규제로 인해 그동안 억눌렸던 소비심리 급증</p>
-                     <p><a style="font-weight:bold;font-size:larger;line-height:200%;">②</a>  코로나19 사태 이후 등산 및 캠핑 등 산림자원 중심 여행 트렌드 급부상 및 관심 증가</p>
+                     <p><a style="font-weight:bold;font-size:larger;line-height:200%;">②</a>  코로나19 사태 이후 등산, 캠핑 및 낚시 등 레저 스포츠 활동 중심 여행 트렌드 급부상 및 관심 증가</p>
                      <p>
-                        <a style="font-weight:bold;font-size:larger;line-height:200%;">③</a>  등산 및 캠핑 물품 경우, 실제 사용 후 구매를 원하는
+                        <a style="font-weight:bold;font-size:larger;line-height:200%;">③</a>  레저 스포츠용 물품 경우, 실제 사용 후 구매를 원하는
                            <a class="footnote" id="footnote_글번호_1">
                               <sup>*</sup>
                                  <span class="note" style="font-size:x-small;">
@@ -183,7 +183,7 @@ div.footnote_desc {
                            </a>
                         <a style="color:red;font-weight:bold;">트라이슈머(trysumer)</a>가 다수
                      </p>                     
-                     <p><a style="font-weight:bold;font-size:larger;line-height:200%;">④</a>  상기 소비심리 급증, 산림자원 중심 여행 트렌드 급부상 및 주 고객이 트라이슈머인 점 등으로 인해 기획한 쇼핑몰</p>
+                     <p><a style="font-weight:bold;font-size:larger;line-height:200%;">④</a>  상기 소비심리 급증, 레저 스포츠 활동 중심 트렌드 급부상 및 주 고객이 트라이슈머인 점 등으로 인해 기획한 쇼핑몰</p>
                   </div>
                </div>
             </div>
@@ -196,19 +196,28 @@ div.footnote_desc {
                <div class="tab">
                   <div id="tab-what-is-lore-ipsum" class="tab-content">
                      <p>
-                        <a style="font-weight:bold;line-height:200%;">회원 관련</a> : 회원가입, 로그인, 로그아웃, 회원정보 수정 
+                        <a style="font-weight:bold;line-height:200%;">회원 관련</a> : 로그인, 회원가입
                      </p>
                      <p>
-                        <a style="font-weight:bold;line-height:200%;">상품 관련</a> : 카테고리 추가, 상품 등록, 상품 목록, 상품 조회, 상품 수정, 상품 삭제
+                        <a style="font-weight:bold;line-height:200%;">상품 관련</a> : 상품 등록, 상품 목록, 상품 조회, 상품 수정, 상품 삭제, 상품 이미지 첨부, 상품 이미지 변경
                      </p>
                      <p>
-                        <a style="font-weight:bold;line-height:200%;">기타</a> : 상품리뷰 추가, 상품리뷰 삭제, 상품리뷰 추천, 상담 채팅, 주문 삭제 
+                        <a style="font-weight:bold;line-height:200%;">리뷰 관련</a> : 리뷰 추가, 리뷰 삭제, 리뷰 수정, 리뷰 목록
                      </p>
+                     <p>
+                        <a style="font-weight:bold;line-height:200%;">카트 관련</a> : 카트 담기, 카트 목록, 카트 삭제
+                     </p>
+                     <p>
+                        <a style="font-weight:bold;line-height:200%;">주문 관련</a> : 주문 하기, 주문 확인, 주문 삭제
+                     </p>
+                     <p>
+                        <a style="font-weight:bold;line-height:200%;">기타</a> : 카테고리 분류, 전체 채팅방, 배송 확인
+                     </p>   
                   </div>
                </div>
             </div>
 
-            <br>
+<!--             <br>
             <header class="entry-header">
             <h1 class="entry-title">Ⅳ. 사용 기술 및 개발 환경</h1>   
             </header>            
@@ -223,12 +232,12 @@ div.footnote_desc {
                      </p>
                   </div>
                </div>
-            </div>
+            </div> -->
             
             
             <article class="hentry">
                <div class="entry-content">   
-                  <h2 style="font-family: 'Herr Von Muellerhoff';color:#ccc;font-weight:300;">Yours, Von Muellerhoff</h2>
+                  <h2 style="font-family: 'Herr Von Muellerhoff';color:#ccc;font-weight:300;">Enjoy your Leisure!</h2>
                </div><!-- .entry-content -->
             </article>
             
@@ -245,8 +254,8 @@ div.footnote_desc {
    <footer id="colophon" class="site-footer">
    <div class="container">
       <div class="site-info">
-         <h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Mountshop</h1>
-         Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+         <h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Sankai</h1>
+			<i class="fa fa-love"></i><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95">이용약관</a>
 
       </div>
    </div>   

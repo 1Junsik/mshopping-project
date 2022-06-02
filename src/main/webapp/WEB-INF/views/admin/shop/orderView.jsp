@@ -5,7 +5,7 @@
 
 <html>
 <head>
-	<title>kubg Admin</title>
+	<title>Sankai Admin</title>
 	
 <script src="../../resources/jquery/jquery-3.3.1.min.js"></script>
 
@@ -79,7 +79,7 @@
 	<header id="header">
 		<div id="header_box">
 			<h1 class="title">
-				<a href="../index">MOUNTSHOP Admin</a>
+				<a href="../index">Sankai Admin</a>
 			</h1>
 		</div>
 	</header>
@@ -102,13 +102,11 @@
 	<section id="container">
 		<aside>
 			<ul>
-				<li><a href="register">상품 등록</a></li>
-				<li><a href="list">상품 목록</a></li>
+				<li><a href="../goods/register">상품 등록</a></li>
+				<li><a href="../goods/list">상품 목록</a></li>
 				<li><a href="orderList">주문 목록</a></li>
 	
-				<li><a href="/admin/shop/allReply">상품 소감</a></li>
-	
-				<li><a href="">유저 목록</a></li>
+				<li><a href="allReply">상품 소감</a></li>
 			</ul>
 		</aside>
 		<div id="container_box">
@@ -179,9 +177,11 @@
 	</section>
 
 	<footer id="footer">
-		<div id="footer_box">
-			<%@ include file="../include/footer.jsp" %>
-		</div>		
+		<ul>
+			<li><a href="../../intro">사이트 소개</a></li>
+			<li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95">이용약관</a></li>
+			<li><a href="../../">Sankai</a></li>
+		</ul>
 	</footer>
 
 </div>

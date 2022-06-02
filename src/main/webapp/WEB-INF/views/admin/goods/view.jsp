@@ -3,13 +3,21 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-	<title>kubg Admin</title>
+	<title>Sankai Admin</title>
 	
 <script src="../../resources/jquery/jquery-3.3.1.min.js"></script>
 
 <link rel="stylesheet" href="../../resources/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" href="../../resources/bootstrap/bootstrap-theme.min.css">
 <script src="../../resources/bootstrap/bootstrap.min.js"></script>
+
+<link rel='stylesheet' href='../../resources/css/woocommerce-layout.css' type='text/css' media='all'/>
+<link rel='stylesheet' href='../../resources/css/woocommerce-smallscreen.css' type='text/css' media='only screen and (max-width: 768px)'/>
+<link rel='stylesheet' href='../../resources/css/woocommerce.css' type='text/css' media='all'/>
+<link rel='stylesheet' href='../../resources/css/font-awesome.min.css' type='text/css' media='all'/>
+<link rel='stylesheet' href='../../resources/style.css' type='text/css' media='all'/>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500,700%7CHerr+Von+Muellerhoff:400,500,700%7CQuattrocento+Sans:400,500,700' type='text/css' media='all'/>
+<link rel='stylesheet' href='../../resources/css/easy-responsive-shortcodes.css' type='text/css' media='all'/>
 	
 <style>
 	body { font-family:'맑은 고딕', verdana; padding:0; margin:0; }
@@ -58,7 +66,7 @@ textarea#gdsDes { width:400px; height:180px; }
 	<header id="header">
 		<div id="header_box">
 			<h1 class="title">
-				<a href="../index">MOUNTSHOP Admin</a>
+				<a href="../index">Sankai Admin</a>
 			</h1>
 		</div>
 	</header>
@@ -83,11 +91,9 @@ textarea#gdsDes { width:400px; height:180px; }
 			<ul>
 				<li><a href="register">상품 등록</a></li>
 				<li><a href="list">상품 목록</a></li>
-				<li><a href="/admin/shop/orderList">주문 목록</a></li>
+				<li><a href="../shop/orderList">주문 목록</a></li>
 	
-				<li><a href="/admin/shop/allReply">상품 소감</a></li>
-	
-				<li><a href="">유저 목록</a></li>
+				<li><a href="../shop/allReply">상품 소감</a></li>
 			</ul>
 		</aside>
 		<div id="container_box">
@@ -97,10 +103,8 @@ textarea#gdsDes { width:400px; height:180px; }
 			
 			<input type="hidden" name="n" value="${goods.gdsNum}"/>
 			
-			<div class="inputArea">	
-				<label>1차 분류</label>
-				<span class="category1"></span>								
-				<label>2차 분류</label>
+			<div class="inputArea">								
+				<label>분류코드</label>
 				<span class="category2">${goods.cateCode}</span>
 			</div>
 			
@@ -170,9 +174,9 @@ textarea#gdsDes { width:400px; height:180px; }
 	<footer id="footer">
 		<div id="footer_box">
 			<ul>
-				<li>사이트 소개</li>
-				<li>이용약관</li>
-				<li>mountshop</li>
+				<li><a href="../../intro">사이트 소개</a></li>
+				<li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95">이용약관</a></li>
+				<li><a href="../../">Sankai</a></li>
 			</ul>
 		</div>		
 	</footer>

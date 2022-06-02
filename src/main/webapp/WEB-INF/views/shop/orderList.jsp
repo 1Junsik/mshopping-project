@@ -6,7 +6,7 @@
 <html>
 <head>
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<title>Moschino | Minimalist Free HTML Portfolio by WowThemes.net</title>
+<title>Sankai</title>
 <link rel='stylesheet' href='../resources/css/woocommerce-layout.css' type='text/css' media='all'/>
 <link rel='stylesheet' href='../resources/css/woocommerce-smallscreen.css' type='text/css' media='only screen and (max-width: 768px)'/>
 <link rel='stylesheet' href='../resources/css/woocommerce.css' type='text/css' media='all'/>
@@ -83,7 +83,7 @@
 	<div class="container">
 		<header id="masthead" class="site-header">
 		<div class="site-branding">
-			<h1 class="site-title"><a href="../" rel="home">Mountshop</a></h1>
+			<h1 class="site-title"><a href="../" rel="home">Sankai</a></h1>
 			<h2 class="site-description">오늘도 즐거운 하루 되세요 :)</h2>
 		</div>
 		<nav id="site-navigation" class="main-navigation">
@@ -113,10 +113,10 @@
 						<a href="../chatView">채팅방</a>
 					</li>
 					<li>
-						<a href="../shop/cartList">카트 리스트</a>
+						<a href="../shop/cartList">장바구니</a>
 					</li>
 					<li>
-						<a href="../shop/orderList">주문 리스트</a>
+						<a href="../shop/orderList">주문내역</a>
 					</li>
 					<li>
 						<a href="../member/signout">로그아웃</a>
@@ -203,8 +203,8 @@
 	<footer id="colophon" class="site-footer">
 	<div class="container">
 		<div class="site-info">
-			<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Mountshop</h1>
-			<i class="fa fa-love"></i><a href="https://bootstrapthemes.co">사이트 소개</a><br><a href="https://bootstrapthemes.co">이용약관</a>
+			<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Sankai</h1>
+			<i class="fa fa-love"></i><a href="../intro">사이트 소개</a><br><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95">이용약관</a>
 
 		</div>
 	</div>	

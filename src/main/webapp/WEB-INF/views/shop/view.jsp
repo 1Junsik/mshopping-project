@@ -5,7 +5,7 @@
 
 <html>
 <head>
-	<title>kubg</title>
+	<title>Sankai</title>
 	
 	<script src="../resources/jquery/jquery-3.3.1.min.js"></script>
 	<link rel='stylesheet' href='../resources/css/woocommerce-layout.css' type='text/css' media='all'/>
@@ -112,8 +112,8 @@ function replyList() {
 	<div class="container">
 		<header id="masthead" class="site-header">
 		<div class="site-branding">
-			<h1 class="site-title"><a href="../" rel="home">Mountshop</a></h1>
-			<h2 class="site-description">Minimalist Portfolio HTML Template</h2>
+			<h1 class="site-title"><a href="../" rel="home">Sankai</a></h1>
+			<h2 class="site-description">오늘도 즐거운 하루 되세요 :)</h2>
 		</div>
 		<nav id="site-navigation" class="main-navigation">
 		<button class="menu-toggle">Menu</button>
@@ -139,10 +139,10 @@ function replyList() {
 					${member.userName}님 환영합니다.
 				</li>
 				<li>
-					<a href="../shop/cartList">카트 리스트</a>
+					<a href="../shop/cartList">장바구니</a>
 				</li>
 				<li>
-					<a href="../shop/orderList">주문 리스트</a>
+					<a href="../shop/orderList">주문내역</a>
 				</li>
 				<li>
 					<a href="../member/signout">로그아웃</a>
@@ -444,8 +444,8 @@ $(".modal_cancel").click(function(){
 <footer id="colophon" class="site-footer">
 	<div class="container">
 		<div class="site-info">
-			<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Mountshop</h1>
-			Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+			<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Sankai</h1>
+			<i class="fa fa-love"></i><a href="../intro">사이트소개</a>
 
 		</div>
 	</div>

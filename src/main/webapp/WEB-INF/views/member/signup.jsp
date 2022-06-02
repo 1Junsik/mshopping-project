@@ -6,7 +6,7 @@
 <html>
 <head>
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<title>Moschino | Minimalist Free HTML Portfolio by WowThemes.net</title>
+<title>Sankai</title>
 <link rel='stylesheet' href='../resources/css/woocommerce-layout.css' type='text/css' media='all'/>
 <link rel='stylesheet' href='../resources/css/woocommerce-smallscreen.css' type='text/css' media='only screen and (max-width: 768px)'/>
 <link rel='stylesheet' href='../resources/css/woocommerce.css' type='text/css' media='all'/>
@@ -21,7 +21,7 @@
    <div class="container">
       <header id="masthead" class="site-header">
       <div class="site-branding">
-         <h1 class="site-title"><a href="../" rel="home">Mountshop</a></h1>
+         <h1 class="site-title"><a href="../" rel="home">Sankai</a></h1>
          <h2 class="site-description">오늘도 즐거운 하루 되세요 :)</h2>
       </div>
       <nav id="site-navigation" class="main-navigation">
@@ -85,7 +85,7 @@
                      <h7> "왜 나는 산에 오르는가?" 이 물음에 대답할 말이 없다. 다만 있다면 '어떻게 해서든지 올라가야겠다.' 는 것 뿐이다. - Marcus Schmuck (1925-2005) </h7>
                   </p>
                   <p>
-                     <h3> Mountshop과 함께 최고의 등산을 경험하세요. </h3>
+                     <h3> Sankai 와 함께 최고의 레저스포츠를 경험하세요. </h3>
                   </p>
                </blockquote>
             </div>
@@ -123,8 +123,8 @@
    <footer id="colophon" class="site-footer">
    <div class="container">
       <div class="site-info">
-         <h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Mountshop</h1>
-      Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+         <h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Sankai</h1>
+      <i class="fa fa-love"></i><a href="../intro">사이트소개</a>
 
       </div>
    </div>
