@@ -104,6 +104,7 @@
                      <div class="form">
                         <p><input type="email" id="userId" name="userId" placeholder="이메일" required="required" /></p>
                         <p><input type="password" id="userPass" name="userPass" placeholder="비밀번호" required="required" /></p>
+                        <p><input type="password" placeholder="비밀번호 확인" /></p>
                         <p><input type="text" id="userName" name="userName" placeholder="닉네임" required="required" /></p>
                         <p><input type="text" id="userPhon" name="userPhon" placeholder="연락처" required="required" /></p>
                         
